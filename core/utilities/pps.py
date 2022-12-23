@@ -1,6 +1,18 @@
 import sys, os, time, subprocess
 
-class PPS:
+class PPS():
+    old_rx: int
+    old_tx: int
+
+    new_rx: int
+    new_tx: int
+
+    pps: int
+    def __init__(self, interface: str) -> None:
+        self.interface = interface
+
+
+class OldPPS:
     old_rx = 0
     old_tx = 0
     new_rx = 0
