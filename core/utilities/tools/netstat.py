@@ -13,6 +13,8 @@ class Netstat():
             conn_info = self.remove_empty_element(line.split(" "))
             if "tcp" in conn_info[0]: (self.connections).append(self.remove_empty_element(line.split(" ")))
 
+    def conns(self) -> list: return self.connections
+
     def remove_empty_element(self, arr: list) -> list:
         return list(filter(None, arr))
 
