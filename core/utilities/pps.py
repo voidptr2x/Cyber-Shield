@@ -20,7 +20,7 @@ class PPS():
     """
     This functions returns rx and tx packets
     """
-    def getPackets(self) -> str, str:
-        return subprocess.output("sudo cat /sys/class/net/{0}/statistics/rx_packets".format(self.interface())), subprocess.getoutput("sudo cat /sys/class/net/{0}/statistics/tx_packets".format(self.interface))
+    def getPackets(self) -> list:
+        return [subprocess.output("sudo cat /sys/class/net/{0}/statistics/rx_packets".format(self.interface())), subprocess.getoutput("sudo cat /sys/class/net/{0}/statistics/tx_packets".format(self.interface))]
 
     def retrievePPS(self) -> int: self.pps

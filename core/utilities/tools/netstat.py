@@ -17,6 +17,3 @@ class Netstat():
 
     def remove_empty_element(self, arr: list) -> list:
         return list(filter(None, arr))
-
-n = Netstat()
-print(n.connections[0][3])
