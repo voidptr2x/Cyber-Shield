@@ -1,0 +1,41 @@
+{
+    "Terminal": {
+        "size": [30, 80],
+        "title": "",
+        "descriptipn": "",
+        "version": 1.00,
+        "motd": ""
+    },
+    "Graph": {
+        "display": true,
+        "border_color": "{RED}",
+        "data_color": "{GREEN}"
+    },
+    "IP_Table": {
+        "display": false,
+        "border_color": "{RED}",
+        "text_color": "",
+        "header_text_color": ""
+    },
+    "OS_Display": {
+        "os_position": "",
+        "os_version": "",
+        "shell": ""
+    },
+    "Hardware": {
+        "cpu_position": "",
+        "cpu_cores_position": "",
+        "gpu_position": "",
+        "gpu_cores_position": "",
+        "memory_position": "",
+        "memory_capacity_position": "",
+        "memory_usage_position": "",
+        "memory_free_position": ""
+    },
+    "Connection": {
+        "wifi_adapter_position": "",
+        "ms_position": "",
+        "download_speed_position": "",
+        "upload_speed_position": ""
+    }
+}

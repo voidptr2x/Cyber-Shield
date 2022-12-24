@@ -3,16 +3,21 @@ import os, sys, time, subprocess
 
 
 class ShieldFX():
-    def __init__(self, file: str) -> None:
-        self.file = file
-        """
-        Check if file exists to pervent errors
-        """
-        self.file_data = open(file)
-        self.file_lines = self.file_data.split("\n")
+    ui_path = "assets/ui.txt"
+    ui_data: str
+    config_path = "assets/config.json"
+    config_data: str
+    rendered_ui: str
+    def __init__(self) -> None:
+        # check if file exists here to prevent errors
+        self.config_path = open(self.config_path)
+        self.ui_data = open(self.ui_path, "r").read()
 
+        
     def parse(self) -> None:
-        for line in self.file_lines:
-            if not line.startswith(" ") or not line.startswith("//"): # Possiblitily of a new structue or comment line
-            pass
-            elif line.endswith("{")
+        # create objects for JSON structures and fields for values
+        pass
+        
+    def render_ui(self) -> str:
+        # grab config information here
+        return self.ui_data

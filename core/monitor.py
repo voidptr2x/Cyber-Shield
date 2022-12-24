@@ -1,15 +1,22 @@
 import os, sys, time, threading
 
 from .utilities.pps import *
+from .fx.design import *
 
 class CyberShield():
     current_interface: str
     interfaces: list
     
     def __init__(self) -> None:
-        # p = PPS()
-        # threading.Thread(target=p.run, args=()).start()
-        # while True:
-        #     print("\r{}".format(p.pps), end="")
-        #     time.sleep(1)
-        pass
+        #grab config information
+        #display os, hardware, connection, motd and other information that doesn't update
+
+        # LATER THING: start socket server here
+        sfx = ShieldFX()
+        print(sfx.render_ui())
+        self.start_listener()
+
+    def start_listener(self) -> None:
+        # grab config information incase its needed for future features
+        while True:
+            pass

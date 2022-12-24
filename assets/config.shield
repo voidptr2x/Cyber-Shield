@@ -1,9 +1,0 @@
-{
-    Terminal [
-        size = [30, 80]
-        title = ""
-        descriptipn = ""
-        version = 1.00
-        motd = ""
-    ]
-}
