@@ -1,9 +1,12 @@
-import sys, os, time, platform, socket
+import sys, os, platform
 
 class os():
     def show_os_info():
-        os_name = platform.system()
-        os_version = platform.release()
-        processor = platform.processor()
-        print(f"OS: {os_name} {os_version} ({processor})")
+        uname = platform.uname()
+        print(f'System: {uname.system}')
+        print(f'Node Name: {uname.node}')
+        print(f'Release: {uname.release}')
+        print(f'Version: {uname.version}')
+        print(f'Machine: {uname.machine}')
+        print(f'Processor: {uname.processor}')
     show_os_info()
