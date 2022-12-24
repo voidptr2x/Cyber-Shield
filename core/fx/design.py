@@ -11,7 +11,7 @@ class ShieldFX():
     def __init__(self) -> None:
         # check if file exists here to prevent errors
         self.config_path = open(self.config_path)
-        self.ui_data = open(self.ui_path, "r").read()
+        self.ui_data = open(self.ui_path, "r")
 
         
     def parse(self) -> None:
@@ -20,4 +20,4 @@ class ShieldFX():
         
     def render_ui(self) -> str:
         # grab config information here
-        return self.ui_data
+        return self.ui_data.read()

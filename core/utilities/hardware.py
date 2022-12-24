@@ -1,6 +1,31 @@
 import psutil
 
-class hardware():
+class HardwareInformation():
+    """
+    Hardware
+    """
+    cpu_count: int
+    cpu: str
+    cpu_cores: str
+    cpu_freq: str
+    cpu_usage: str
+
+    """
+    Memory Information
+    """
+    memory_capacity: str
+    memory_used: str
+    memory_free: str
+
+    """
+    Hard drive Information
+    """
+    hdd: str
+    hdd_capacity: str
+    hdd_used: set
+    hdd_free: str
+
+class Hardware():
     def show_hrwr_info():
         cpu_count = psutil.cpu_count()
         cpu_freq = psutil.cpu_freq()
