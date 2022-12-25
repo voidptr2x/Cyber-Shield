@@ -5,7 +5,7 @@ class HardwareInformation():
     Hardware
     """
     cpu_count: int
-    cpu: str
+    cpu_name: str
     cpu_cores: str
     cpu_freq: str
     cpu_usage: str
@@ -13,6 +13,7 @@ class HardwareInformation():
     """
     Memory Information
     """
+    memory_name: str
     memory_capacity: str
     memory_used: str
     memory_free: str
@@ -20,36 +21,42 @@ class HardwareInformation():
     """
     Hard drive Information
     """
-    hdd: str
+    hdd_name: str
     hdd_capacity: str
     hdd_used: set
     hdd_free: str
 
+
+"""
+    Use Example:
+    
+    hdw = Hardware()
+    hdw.info.OBJECTS_HERE
+"""
 class Hardware():
-    def show_hrwr_info():
-        cpu_count = psutil.cpu_count()
-        cpu_freq = psutil.cpu_freq()
-        cpu_percent = psutil.cpu_percent()
+    info: HardwareInformation
+    def __init__(self) -> None:
+        self.__fetchCPU()
+        self.__fetchMemory()
+        self.__fetchHDD()
 
-        print(f'CPU Count: {cpu_count}')
-        print(f'CPU Frequency: {cpu_freq.current:.0f} MHz')
-        print(f'CPU Utilization: {cpu_percent}%')
+    def __fetchCPU(self) -> None:
+        self.info.cpu_count = psutil.cpu_count()
+        self.info.cpu_name = "THIS IS NEEDED"
+        self.info.cpu_freq = psutil.cpu_freq()
+        self.info.cpu_usage = psutil.cpu_percent()
 
+    def __fetchMemory(self) -> None:
         mem_info = psutil.virtual_memory()
-        mem_total = mem_info.total / (1024 ** 2)
-        mem_used = mem_info.used / (1024 ** 2)
-        mem_free = mem_info.free / (1024 ** 2)
+        self.info.memory_name = "THIS IS NEEDED"
+        self.info.memory_capacity = mem_info.total / (1024 ** 2)
+        self.info.memory_used = mem_info.used / (1024 ** 2)
+        self.info.memory_free = mem_info.free / (1024 ** 2)
 
-        print(f'Total Memory: {mem_total:.0f} MB')
-        print(f'Used Memory: {mem_used:.0f} MB')
-        print(f'Free Memory: {mem_free:.0f} MB')
-
+    
+    def __fetchHDD(self) -> None:
         disk_info = psutil.disk_usage('/')
-        disk_total = disk_info.total / (1024 ** 3)
-        disk_used = disk_info.used / (1024 ** 3)
-        disk_free = disk_info.free / (1024 ** 3)
-
-        print(f'Total Disk Space: {disk_total:.0f} GB')
-        print(f'Used Disk Space: {disk_used:.0f} GB')
-        print(f'Free Disk Space: {disk_free:.0f} GB')
-    show_hrwr_info()
+        self.info.hdd_name = "THIS IS NEEDED"
+        self.info.hdd_capacity = disk_info.total / (1024 ** 3)
+        self.info.hdd_usage = disk_info.used / (1024 ** 3)
+        self.info.hdd_free = disk_info.free / (1024 ** 3)
