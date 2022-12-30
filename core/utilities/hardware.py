@@ -1,4 +1,5 @@
 import psutil
+import platform
         
 class HardwareInformation():
     """
