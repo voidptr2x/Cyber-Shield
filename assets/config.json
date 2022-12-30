@@ -7,35 +7,59 @@
         "motd": ""
     },
     "Graph": {
+        "data_c": [0, 0, 0],
+        "attacked_data_c": [0, 0, 0],
+
         "display": true,
-        "border_color": "{RED}",
-        "data_color": "{GREEN}"
+        "border_color": "{RED}"
     },
-    "IP_Table": {
+    "Conn_Table": {
         "display": false,
         "border_color": "{RED}",
-        "text_color": "",
-        "header_text_color": ""
+        "text_color": 0,
+        "header_text_color": 0
     },
     "OS_Display": {
-        "os_position": "",
-        "os_version": "",
-        "shell": ""
+        "labels_c": [0, 0, 0],
+        "value_c": [0, 0, 0],
+        
+        "os_name_p": [0, 0],
+        "os_kernel_p": [0, 0],
+        "os_version_p": [0, 0],
+        "shell_p": [0, 0]
     },
     "Hardware": {
-        "cpu_position": "",
-        "cpu_cores_position": "",
-        "gpu_position": "",
-        "gpu_cores_position": "",
-        "memory_position": "",
-        "memory_capacity_position": "",
-        "memory_usage_position": "",
-        "memory_free_position": ""
+        "labels_c": [0, 0, 0],
+        "value_c": [0, 0, 0],
+
+        "cpu_count_p": [0, 0],
+        "cpu_name_p": [0, 0],
+        "cpu_cores_p": [0, 0],
+        "cpu_usage_p": [0, 0],
+
+        "gpu_name_p": [0, 0],
+        "gpu_cores_p": [0, 0],
+        "gpu_usage": [0, 0],
+
+        "memory_name_p": [0, 0],
+        "memory_capacity_p": [0, 0],
+        "memory_usage_p": [0, 0],
+        "memory_used_p": [0, 0],
+        "memory_free_p": [0, 0],
+
+        "hdd_name_p": [0, 0],
+        "hdd_capacity_p": [0, 0],
+        "hdd_used": [0, 0],
+        "hdd_free": [0, 0],
+        "hdd_usage": [0, 0]
     },
     "Connection": {
-        "wifi_adapter_position": "",
-        "ms_position": "",
-        "download_speed_position": "",
-        "upload_speed_position": ""
+        "labels_c": [0, 0, 0],
+        "value_c": [0, 0, 0],
+
+        "wifi_adapter_p": [0, 0],
+        "ms_p": [0, 0],
+        "download_speed_p": [0, 0],
+        "upload_speed_p": [0, 0]
     }
 }

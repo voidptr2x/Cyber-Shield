@@ -19,12 +19,21 @@ class HardwareInformation():
     memory_free: str
 
     """
+    GPU Information
+    """
+    gpu_name: str
+    gpu_cores: str
+    gpu_freq: str
+    gpu_usage: str
+
+    """
     Hard drive Information
     """
     hdd_name: str
     hdd_capacity: str
     hdd_used: set
     hdd_free: str
+    hdd_usage: str
 
 
 """

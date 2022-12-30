@@ -3,6 +3,8 @@ import os, sys, time, threading
 from .utilities.pps import *
 from .fx.design import *
 
+from .config import *
+
 class CyberShield():
     current_interface: str
     interfaces: list
@@ -13,6 +15,8 @@ class CyberShield():
 
         # LATER THING: start socket server here
         sfx = ShieldFX()
+        cfg = Config()
+
         print(sfx.render_ui())
         self.start_listener()
 
