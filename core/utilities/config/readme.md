@@ -1,4 +1,4 @@
-<div align="ceneter"> 
+<div align="center"> 
 Cyber Shield
 </div>
 <p>The Official Cyber Shield Application Repo.</p>
