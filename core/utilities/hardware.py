@@ -1,3 +1,4 @@
+import os
 import psutil
 import platform
         
@@ -43,6 +44,22 @@ class HardwareInformation():
     hdw = Hardware()
     hdw.info.OBJECTS_HERE
 """
+
+# Get the CPU name from /proc/cpuinfo
+with open('/proc/cpuinfo', 'r') as f:
+    for line in f.readlines():
+        if line.startswith('model name'):
+            cpu_name = line.split(':')[1].strip()
+ 
+# Get the Memory type from /proc/meminfo
+with open('/proc/meminfo', 'r') as f:
+    for line in f.readlines():
+        if line.startswith('MemTotal'):
+            memory_type = line.split(':')[1].strip()
+
+ # Get the HDD name from /sys/block directory            
+hdd_name = os.listdir('/sys/block')[0]
+
 class Hardware():
     info: HardwareInformation
     def __init__(self) -> None:
@@ -52,13 +69,13 @@ class Hardware():
 
     def __fetchCPU(self) -> None:
         self.info.cpu_count = psutil.cpu_count()
-        self.info.cpu_name = "THIS IS NEEDED"
+        self.info.cpu_name = cpu_name
         self.info.cpu_freq = psutil.cpu_freq()
         self.info.cpu_usage = psutil.cpu_percent()
 
     def __fetchMemory(self) -> None:
         mem_info = psutil.virtual_memory()
-        self.info.memory_name = "THIS IS NEEDED"
+        self.info.memory_name = memory_type
         self.info.memory_capacity = mem_info.total / (1024 ** 2)
         self.info.memory_used = mem_info.used / (1024 ** 2)
         self.info.memory_free = mem_info.free / (1024 ** 2)
@@ -66,7 +83,7 @@ class Hardware():
     
     def __fetchHDD(self) -> None:
         disk_info = psutil.disk_usage('/')
-        self.info.hdd_name = "THIS IS NEEDED"
+        self.info.hdd_name = hdd_name
         self.info.hdd_capacity = disk_info.total / (1024 ** 3)
         self.info.hdd_usage = disk_info.used / (1024 ** 3)
         self.info.hdd_free = disk_info.free / (1024 ** 3)
