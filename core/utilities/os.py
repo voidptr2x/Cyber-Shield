@@ -10,5 +10,5 @@ class OS():
         self.info = OSInformation()
         self.os_name = os.name
         self.os_version = os.uname().release 
-        self.os_kernel = os.uname() 
+        self.os_kernel = os.uname().version
         pass
