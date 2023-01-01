@@ -1,7 +1,5 @@
 import os, sys, time, subprocess
 
-
-
 class ShieldFX():
     ui_path = "assets/ui.txt"
     ui_data: str

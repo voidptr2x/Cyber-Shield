@@ -7,4 +7,8 @@ class OSInformation():
 
 class OS():
     def __init__(self) -> None:
+        self.info = OSInformation()
+        self.os_name = os.name
+        self.os_version = os.uname().release 
+        self.os_kernel = os.uname() 
         pass
