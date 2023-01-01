@@ -7,15 +7,15 @@
         "motd": ""
     },
     "PPS": {
+        "display": true,
         "pps_p": [10, 15],
         "pps_label_c": [0, 0],
         "pps_value_c": [0, 0]
     },
     "Graph": {
+        "display": true,
         "data_c": [0, 0, 0],
         "attacked_data_c": [0, 0, 0],
-
-        "display": true,
         "border_c": "{RED}"
     },
     "Conn_Table": {
@@ -25,6 +25,7 @@
         "header_text_c": 0
     },
     "OS_Display": {
+        "display": true,
         "labels_c": [0, 0, 0],
         "value_c": [0, 0, 0],
         
@@ -34,6 +35,7 @@
         "shell_p": [0, 0]
     },
     "Hardware": {
+        "display": true,
         "labels_c": [0, 0, 0],
         "value_c": [0, 0, 0],
 
@@ -59,6 +61,7 @@
         "hdd_usage_p": [0, 0]
     },
     "Connection": {
+        "display": true,
         "labels_c": [0, 0, 0],
         "value_c": [0, 0, 0],
 
