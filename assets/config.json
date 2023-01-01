@@ -1,6 +1,6 @@
 {
     "Terminal": {
-        "size": [30, 80],
+        "size": [32, 90],
         "title": "",
         "description": "",
         "version": 1.00,
@@ -16,13 +16,13 @@
         "attacked_data_c": [0, 0, 0],
 
         "display": true,
-        "border_color": "{RED}"
+        "border_c": "{RED}"
     },
     "Conn_Table": {
         "display": false,
-        "border_color": "{RED}",
-        "text_color": 0,
-        "header_text_color": 0
+        "border_c": "{RED}",
+        "text_c": 0,
+        "header_text_c": 0
     },
     "OS_Display": {
         "labels_c": [0, 0, 0],
@@ -44,7 +44,7 @@
 
         "gpu_name_p": [0, 0],
         "gpu_cores_p": [0, 0],
-        "gpu_usage": [0, 0],
+        "gpu_usage_p": [0, 0],
 
         "memory_name_p": [0, 0],
         "memory_capacity_p": [0, 0],
@@ -54,9 +54,9 @@
 
         "hdd_name_p": [0, 0],
         "hdd_capacity_p": [0, 0],
-        "hdd_used": [0, 0],
-        "hdd_free": [0, 0],
-        "hdd_usage": [0, 0]
+        "hdd_used_p": [0, 0],
+        "hdd_free_p": [0, 0],
+        "hdd_usage_p": [0, 0]
     },
     "Connection": {
         "labels_c": [0, 0, 0],

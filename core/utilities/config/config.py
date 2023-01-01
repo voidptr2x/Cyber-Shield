@@ -1,4 +1,4 @@
-import json
+import os, json
 
 from .vars import *
 
@@ -8,6 +8,7 @@ class Config():
                 """
                 To Avoid Errors and try/except. Check if file exists and validate JSON syntax
                 """
+                if os.path.isfile("assets/config.json") == False: return
                 self.term = Terminal()
                 self.ppscfg = PPSConfig()
                 self.graph = GraphConfig()
@@ -15,8 +16,16 @@ class Config():
                 self.os = OSConfig()
                 self.hdw = HardwareConfig()
                 self.conn = SysConnection()
+                
                 self.config = json.loads(open("assets/config.json").read())
+                
                 self.parseTerminal()
+                self.parsePPS()
+                self.parseGraph()
+                self.parseConnTable()
+                self.parseOS()
+                self.parseHardware()
+                self.parseConnection 
 
         def parseTerminal(self) -> Terminal:
                 """
@@ -45,7 +54,7 @@ class Config():
                 self.conntable.border_c = self.config['Conn_Table']['border_c']
                 self.conntable.header_text_c = self.config['Conn_Table']['header_text_c']
 
-        def retrieveOS(self) -> OSConfig:
+        def parseOS(self) -> OSConfig:
                 self.os.labels_c = self.config['OS_Display']['labels_c']
                 self.os.value_c = self.config['OS_Display']['value_c']
                 self.os.os_name_p = self.config['OS_Display']['os_name_p']
@@ -53,7 +62,7 @@ class Config():
                 self.os.os_version_p = self.config['OS_Display']['os_version_p']
                 self.os.shell_p = self.config['OS_Display']['shell_p']
 
-        def retrieveHardware(self) -> HardwareConfig:
+        def parseHardware(self) -> HardwareConfig:
                 self.hdw.labels_c = self.config['Hardware']['labels_c']
                 self.hdw.value_c = self.config['Hardware']['value_c']
                 self.hdw.cpu_count_p = self.config['Hardware']['cpu_count_p']
@@ -74,7 +83,7 @@ class Config():
                 self.hdw.hdd_free_p = self.config['Hardware']['hdd_free_p']
                 self.hdw.hdd_usage_p = self.config['Hardware']['hdd_usage_p']
         
-        def retrieveConnection(self) -> SysConnection:
+        def parseConnection(self) -> SysConnection:
                 self.conn.labels_c = self.config['Connection']['labels_c']
                 self.conn.value_c = self.config['Connection']['value_c']
                 self.conn.ip = self.config['Connection']['ip']
