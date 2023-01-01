@@ -3,21 +3,21 @@ import json
 from .vars import *
 
 class Config():
-        term: Terminal
-        graph: GraphConfig
-        conntable: ConnTable
-        os: OSConfig
-        hdw: HardwareConfig
-        conn: SysConnection
 
         def __init__(self) -> None:
                 """
                 To Avoid Errors and try/except. Check if file exists and validate JSON syntax
                 """
+                self.term = Terminal()
+                self.graph = GraphConfig()
+                self.conntable = ConnTable()
+                self.os = OSConfig()
+                self.hdw = HardwareConfig()
+                self.conn = SysConnection()
                 self.config = json.loads(open("assets/config.json").read())
                 self.parseTerminal()
 
-        def parseTerminal(self) -> term:
+        def parseTerminal(self) -> Terminal:
                 """
                 Validate the Terminal structure in JSON!
                 """
@@ -27,19 +27,19 @@ class Config():
                 self.term.version = self.config['Terminal']['version']
                 self.term.motd = self.config['Terminal']['motd']
 
-        def parseGraph(self) -> graph:
+        def parseGraph(self) -> GraphConfig:
                 self.graph.display = self.config['Graph']['display']
                 self.graph.data_c = self.config['Graph']['data_c']
                 self.graph.attacked_data_c = self.config['Graph']['attacked_data_c']
                 self.graph.border_c = self.config['Graph']['border_c']
 
-        def parseConnTable(self) -> conntable:
+        def parseConnTable(self) -> ConnTable:
                 self.conntable.display = self.config['Conn_Table']['display']
                 self.conntable.text_c = self.config['Conn_Table']['text_c']
                 self.conntable.border_c = self.config['Conn_Table']['border_c']
                 self.conntable.header_text_c = self.config['Conn_Table']['header_text_c']
 
-        def retrieveOS(self) -> os:
+        def retrieveOS(self) -> OSConfig:
                 self.os.labels_c = self.config['OS_Display']['labels_c']
                 self.os.value_c = self.config['OS_Display']['value_c']
                 self.os.os_name_p = self.config['OS_Display']['os_name_p']
@@ -47,7 +47,7 @@ class Config():
                 self.os.os_version_p = self.config['OS_Display']['os_version_p']
                 self.os.shell_p = self.config['OS_Display']['shell_p']
 
-        def retrieveHardware(self) -> hdw:
+        def retrieveHardware(self) -> HardwareConfig:
                 self.hdw.labels_c = self.config['Hardware']['labels_c']
                 self.hdw.value_c = self.config['Hardware']['value_c']
                 self.hdw.cpu_count_p = self.config['Hardware']['cpu_count_p']
@@ -68,7 +68,7 @@ class Config():
                 self.hdw.hdd_free_p = self.config['Hardware']['hdd_free_p']
                 self.hdw.hdd_usage_p = self.config['Hardware']['hdd_usage_p']
         
-        def retrieveConnection(self) -> conn:
+        def retrieveConnection(self) -> SysConnection:
                 self.conn.labels_c = self.config['Connection']['labels_c']
                 self.conn.value_c = self.config['Connection']['value_c']
                 self.conn.ip = self.config['Connection']['ip']

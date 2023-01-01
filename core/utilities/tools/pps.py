@@ -17,6 +17,15 @@ class PPS():
         final_tx = self.old_tx - self.new_tx
         self.pps = int(final_tx - final_rx)
 
+    def updatePPS(self) -> str:
+        self.old_rx, self.old_tx = self.getPackets()
+        time.sleep(1)
+        self.new_rx, self.new_tx = self.getPackets()
+        final_rx = self.old_rx - self.new_rx
+        final_tx = self.old_tx - self.new_tx
+        self.pps = int(final_tx - final_rx)
+        return self.pps
+
     """
     This functions returns rx and tx packets
     """
