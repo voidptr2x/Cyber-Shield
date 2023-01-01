@@ -39,6 +39,7 @@ class Config():
                 self.term.motd = self.config['Terminal']['motd']
         
         def parsePPS(self) -> PPSConfig:
+                self.ppscfg.diaply = self.config['PPS']['display']
                 self.ppscfg.pps_p = self.config['PPS']['pps_p']
                 self.ppscfg.pps_label_c = self.config['PPS']['pps_label_c']
                 self.ppscfg.pps_value_c = self.config['PPS']['pps_value_c']
@@ -56,6 +57,7 @@ class Config():
                 self.conntable.header_text_c = self.config['Conn_Table']['header_text_c']
 
         def parseOS(self) -> OSConfig:
+                self.os.display = self.config['OS_Display']['display']
                 self.os.labels_c = self.config['OS_Display']['labels_c']
                 self.os.value_c = self.config['OS_Display']['value_c']
                 self.os.os_name_p = self.config['OS_Display']['os_name_p']
@@ -64,6 +66,7 @@ class Config():
                 self.os.shell_p = self.config['OS_Display']['shell_p']
 
         def parseHardware(self) -> HardwareConfig:
+                self.hdw.display = self.config['Hardware']['display']
                 self.hdw.labels_c = self.config['Hardware']['labels_c']
                 self.hdw.value_c = self.config['Hardware']['value_c']
                 self.hdw.cpu_count_p = self.config['Hardware']['cpu_count_p']
@@ -85,6 +88,7 @@ class Config():
                 self.hdw.hdd_usage_p = self.config['Hardware']['hdd_usage_p']
         
         def parseConnection(self) -> SysConnection:
+                self.conn.display = self.config['Connection']['display']
                 self.conn.labels_c = self.config['Connection']['labels_c']
                 self.conn.value_c = self.config['Connection']['value_c']
                 self.conn.ip = self.config['Connection']['ip']

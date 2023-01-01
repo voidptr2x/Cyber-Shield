@@ -11,15 +11,15 @@ class Terminal:
     motd: str
 
 class PPSConfig:
+    display: bool
     pps_p: list
     pps_label_c: str
     pps_value_c: str
 
 class GraphConfig:
+    display: bool
     data_c: str
     attacked_data_c: str
-
-    display: bool
     border_c: str
 
 class ConnTable:
@@ -29,6 +29,7 @@ class ConnTable:
     header_text_c: str
 
 class OSConfig:
+    display: bool
     labels_c: str
     value_c: str
 
@@ -38,6 +39,7 @@ class OSConfig:
     shell_p: str
 
 class HardwareConfig:
+    display: bool
     label_c: str
     value_c: str
 
@@ -63,6 +65,7 @@ class HardwareConfig:
     hdd_usage_p: str
 
 class SysConnection:
+    display: bool
     labels_c: str
     value_c: str
 

@@ -8,7 +8,7 @@
     },
     "PPS": {
         "display": true,
-        "pps_p": [10, 15],
+        "pps_p": [11, 41],
         "pps_label_c": [0, 0],
         "pps_value_c": [0, 0]
     },
@@ -29,7 +29,7 @@
         "labels_c": [0, 0, 0],
         "value_c": [0, 0, 0],
         
-        "os_name_p": [0, 0],
+        "os_name_p": [3, 3],
         "os_kernel_p": [0, 0],
         "os_version_p": [0, 0],
         "shell_p": [0, 0]
