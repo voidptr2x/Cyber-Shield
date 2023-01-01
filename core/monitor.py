@@ -16,14 +16,16 @@ class CyberShield():
         self.sfx = ShieldFX()
         self.cfg = Config()
         
-        print("\033[8;{};{}t".format(self.cfg.term.size[0], self.cfg.term.size[1]), end=" ") # Set Terminal Size
-
+        print("\033[?25l") # Hide Cursor
+        print("\x1b[8;{};{}t".format(self.cfg.term.size[0], self.cfg.term.size[1]), end=" ") # Set Terminal Size
+        print("\x1b[0;0f")
         print(self.sfx.render_ui(), end="") # Set UI
 
         self.start_listener()
 
     def start_listener(self) -> None:
         self.pps = PPS("eth0")
+
         while True:
-            print("PP\x1b[{0};{1}f".format(self.cfg.ppscfg.pps_p[0], self.cfg.ppscfg.pps_p[1]), end=" ")
+            print("\x1b[{0};{1}f".format(self.cfg.ppscfg.pps_p[0], self.cfg.ppscfg.pps_p[1]), end=" ")
             print("PPS: {}".format(self.pps.updatePPS()))
