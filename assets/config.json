@@ -7,7 +7,7 @@
         "motd": ""
     },
     "PPS": {
-        "pps_p": [0, 0],
+        "pps_p": [10, 15],
         "pps_label_c": [0, 0],
         "pps_value_c": [0, 0]
     },

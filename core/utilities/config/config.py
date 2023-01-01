@@ -5,9 +5,6 @@ from .vars import *
 class Config():
 
         def __init__(self) -> None:
-                """
-                To Avoid Errors and try/except. Check if file exists and validate JSON syntax
-                """
                 if os.path.isfile("assets/config.json") == False: return
                 self.term = Terminal()
                 self.ppscfg = PPSConfig()
@@ -18,6 +15,10 @@ class Config():
                 self.conn = SysConnection()
                 
                 self.config = json.loads(open("assets/config.json").read())
+
+                """
+                        Validate All Structures and fields
+                """
                 
                 self.parseTerminal()
                 self.parsePPS()
