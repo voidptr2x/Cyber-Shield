@@ -9,6 +9,7 @@ class Config():
                 To Avoid Errors and try/except. Check if file exists and validate JSON syntax
                 """
                 self.term = Terminal()
+                self.ppscfg = PPSConfig()
                 self.graph = GraphConfig()
                 self.conntable = ConnTable()
                 self.os = OSConfig()
@@ -26,6 +27,11 @@ class Config():
                 self.term.description = self.config['Terminal']['description']
                 self.term.version = self.config['Terminal']['version']
                 self.term.motd = self.config['Terminal']['motd']
+        
+        def parsePPS(self) -> PPSConfig:
+                self.ppscfg.pps_p = self.config['PPS']['pps_p']
+                self.ppscfg.pps_label_c = self.config['PPS']['pps_label_c']
+                self.ppscfg.pps_value_c = self.config['PPS']['pps_value_c']
 
         def parseGraph(self) -> GraphConfig:
                 self.graph.display = self.config['Graph']['display']

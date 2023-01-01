@@ -16,14 +16,12 @@ class CyberShield():
         self.sfx = ShieldFX()
         self.cfg = Config()
 
-        # print(self.sfx.render_ui(), end="")
+        print(self.sfx.render_ui(), end="")
         self.start_listener()
 
     def start_listener(self) -> None:
         # grab config information incase its needed for future features
         self.pps = PPS("eth0")
-        print(self.cfg.term.size[0])
-        print(self.cfg.term.size[1])
         print("\033[10;15f")
         while True:
-            print(self.pps.updatePPS(), end=" ")
+            print(self.pps.updatePPS(), end="\r")

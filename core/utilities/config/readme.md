@@ -10,4 +10,7 @@ Call the ``Config`` class to retrieve all information from JSON file then use cl
 cfg = Config()
 ```
 
+# Config File
+Special field addition value '_c' added to them represents '_color' and '_p' short for '_position'
+
 See ``vars.py (/cores/utilities/config/vars.py)`` for a list of properities to use!

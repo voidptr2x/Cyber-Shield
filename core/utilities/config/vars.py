@@ -10,6 +10,11 @@ class Terminal:
     version: str
     motd: str
 
+class PPSConfig:
+    pps_p: list
+    pps_label_c: str
+    pps_value_c: str
+
 class GraphConfig:
     data_c: str
     attacked_data_c: str

@@ -6,6 +6,11 @@
         "version": 1.00,
         "motd": ""
     },
+    "PPS": {
+        "pps_p": [0, 0],
+        "pps_label_c": [0, 0],
+        "pps_value_c": [0, 0]
+    },
     "Graph": {
         "data_c": [0, 0, 0],
         "attacked_data_c": [0, 0, 0],
