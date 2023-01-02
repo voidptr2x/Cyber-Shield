@@ -26,12 +26,12 @@
     },
     "OS_Display": {
         "display": true,
-        "labels_c": [0, 0, 0],
-        "value_c": [0, 0, 0],
+        "labels_c": [255, 255, 0],
+        "value_c": [0, 255, 0],
         
         "os_name_p": [3, 3],
-        "os_kernel_p": [0, 0],
-        "os_version_p": [0, 0],
+        "os_kernel_p": [5, 3],
+        "os_version_p": [4, 3],
         "shell_p": [0, 0]
     },
     "Hardware": {
