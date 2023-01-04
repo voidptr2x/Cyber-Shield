@@ -19,4 +19,4 @@ Our social's
 <div align="center">
 <img src="https://brandlogos.net/wp-content/uploads/2021/11/discord-logo.png"  width="96" height="96" alt="discord" />
 </div>
- * [CyberShield Discord](https://discord.gg/n5ykgFGkHE)
+ * [CyberShield Discord] --> https://discord.gg/n5ykgFGkHE
