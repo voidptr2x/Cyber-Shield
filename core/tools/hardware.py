@@ -62,7 +62,7 @@ hdd_name = os.listdir('/sys/block')[0]
 
 class Hardware():
     def __init__(self) -> None:
-        self.info
+        self.info = HardwareInformation()
         self.__fetchCPU()
         self.__fetchMemory()
         self.__fetchHDD()

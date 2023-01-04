@@ -1,6 +1,6 @@
 {
     "Terminal": {
-        "size": [32, 90],
+        "size": [32, 127],
         "title": "",
         "description": "",
         "version": 1.00,
@@ -8,9 +8,9 @@
     },
     "PPS": {
         "display": true,
-        "pps_p": [11, 41],
-        "pps_label_c": [0, 0],
-        "pps_value_c": [0, 0]
+        "pps_p": [11, 60],
+        "pps_label_c": [255, 255, 0],
+        "pps_value_c": [0, 255, 0]
     },
     "Graph": {
         "display": true,
@@ -29,18 +29,18 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
         
-        "os_name_p": [3, 3],
-        "os_kernel_p": [5, 3],
-        "os_version_p": [4, 3],
-        "shell_p": [0, 0]
+        "os_name_p": [5, 3],
+        "os_kernel_p": [7, 3],
+        "os_version_p": [6, 3],
+        "shell_p": [8, 3]
     },
     "Hardware": {
         "display": true,
-        "labels_c": [0, 0, 0],
-        "value_c": [0, 0, 0],
+        "labels_c": [255, 255, 0],
+        "value_c": [0, 255, 0],
 
         "cpu_count_p": [0, 0],
-        "cpu_name_p": [0, 0],
+        "cpu_name_p": [13,3],
         "cpu_cores_p": [0, 0],
         "cpu_usage_p": [0, 0],
 

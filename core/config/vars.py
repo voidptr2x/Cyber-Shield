@@ -40,7 +40,7 @@ class OSConfig:
 
 class HardwareConfig:
     display: bool
-    label_c: str
+    labels_c: str
     value_c: str
 
     cpu_count_p: str
