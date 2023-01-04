@@ -38,7 +38,7 @@ class CyberShield():
 
         if self.cfg.hdw.display == True:
             if self.cfg.hdw.cpu_name_p != [0, 0]:
-                TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw_value_c, self.hdw.info.cpu_name)
+                TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_name)
 
             # if self.cfg.hdw.cpu_cores_p != [0, 0]:
             #     print(f"\x1b[{self.cfg.hdw.cpu_cores_p[0]};{self.cfg.hdw.cpu_cores_p[1]}f\x1b[38;2;{self.cfg.hdw.labels_c[0]};{self.cfg.hdw.labels_c[1]};{self.cfg.hdw.labels_c[2]}m", end="")

@@ -6,7 +6,6 @@ class TerminalControl:
         print(f"{label}", end="")
         print(f"\x1b[38;2;{value_c[0]};{value_c[1]};{value_c[2]}m", end="")
         print(f"{value}", end="")
-        # print("\x1b[37m", end="")
 
         
     def placeTextAlt(position: list, value: str):
@@ -14,5 +13,5 @@ class TerminalControl:
         print(f"{value}", end="")
         print("\x1b[37m", end="")
 
-    def move_cursor():
-        print()
+    def move_cursor(position: list):
+        print(f"\x1b[{position[0]};{position[1]}f")
