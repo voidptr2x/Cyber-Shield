@@ -39,7 +39,7 @@ class CyberShield():
         if self.cfg.hdw.display == True:
             if self.cfg.hdw.cpu_name_p != [0, 0]:
                 TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw_value_c, self.hdw.info.cpu_name)
-                
+
             # if self.cfg.hdw.cpu_cores_p != [0, 0]:
             #     print(f"\x1b[{self.cfg.hdw.cpu_cores_p[0]};{self.cfg.hdw.cpu_cores_p[1]}f\x1b[38;2;{self.cfg.hdw.labels_c[0]};{self.cfg.hdw.labels_c[1]};{self.cfg.hdw.labels_c[2]}m", end="")
             #     print(f"CPU Cores: ", end="")
@@ -111,6 +111,5 @@ class CyberShield():
         while True:
             TerminalControl.placeTextAlt(self.cfg.conn.pps_p, "               ")
             TerminalControl.placeText(self.cfg.conn.pps_p, self.cfg.conn.labels_c, "PPS: ", self.cfg.conn.value_c, self.pps.f_pps)
-            # print(f"\x1b[{self.cfg.conn.pps_p[0]};{self.cfg.conn.pps_p[1]}f", end=" ")
-            # print(f"{self.pps.f_pps}")
+            
             time.sleep(1)
