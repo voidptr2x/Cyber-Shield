@@ -5,15 +5,6 @@ from .vars import *
 class Config():
         json_file_path = "assets/config.json"
         def __init__(self) -> None:
-                self.term = self.parseTerminal()
-                self.ppscfg = self.parsePPS()
-                self.graph = self.parseGraph()
-                self.conntable = self.parseConnTable()
-                self.os =  self.parseOS()
-                self.hdw = self.parseHardware()
-                self.conn = self.parseConnection()
-                
-                
                 if os.path.isfile(self.json_file_path) == False: return
                 self.config = json.loads(open("assets/config.json").read())
 
@@ -23,6 +14,13 @@ class Config():
                         - Create a function to restore the config file with empty values
 
                 """
+                self.term = self.parseTerminal()
+                self.ppscfg = self.parsePPS()
+                self.graph = self.parseGraph()
+                self.conntable = self.parseConnTable()
+                self.os =  self.parseOS()
+                self.hdw = self.parseHardware()
+                self.conn = self.parseConnection()
 
         def parseTerminal(self) -> Terminal:
                 """
