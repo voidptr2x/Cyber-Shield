@@ -61,8 +61,8 @@ with open('/proc/meminfo', 'r') as f:
 hdd_name = os.listdir('/sys/block')[0]
 
 class Hardware():
-    info: HardwareInformation
     def __init__(self) -> None:
+        self.info
         self.__fetchCPU()
         self.__fetchMemory()
         self.__fetchHDD()
