@@ -10,19 +10,13 @@ class Terminal:
     version: str
     motd: str
 
-class PPSConfig:
-    display: bool
-    pps_p: list
-    pps_label_c: str
-    pps_value_c: str
-
 class GraphConfig:
     display: bool
     data_c: str
     attacked_data_c: str
     border_c: str
 
-class ConnTable:
+class ConnTableConfig:
     display: bool
     border_c: str
     text_c: str
@@ -69,6 +63,10 @@ class ConnectionConfig:
     labels_c: str
     value_c: str
 
+    ip: str
+    port: str
+    key: str
+    timeout: str
     wifi_adapter_p: str
     ms_p: str
     download_speed_p: str

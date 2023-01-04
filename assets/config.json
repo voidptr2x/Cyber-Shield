@@ -23,9 +23,9 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
         
-        "os_name_p": [3, 3],
-        "os_kernel_p": [5, 3],
-        "os_version_p": [4, 3],
+        "os_name_p": [5, 3],
+        "os_kernel_p": [7, 3],
+        "os_version_p": [6, 3],
         "shell_p": [0, 0]
     },
     "Hardware": {
@@ -58,6 +58,10 @@
         "display": true,
         "labels_c": [0, 0, 0],
         "value_c": [0, 0, 0],
+        "ip": [0, 0],
+        "port": [0 ,0],
+        "key": [0, 0],
+        "timeout": [0, 0],
 
         "wifi_adapter_p": [0, 0],
         "ms_p": [0, 0],

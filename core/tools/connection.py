@@ -11,10 +11,11 @@ class Connection():
     """
     def runPPS(self):
         while True:
-            rx, tx = [int(subprocess.getoutput(f"sudo cat /sys/class/net/{self.interface}/statistics/rx_packets")), int(subprocess.getoutput(f"sudo cat /sys/class/net/{self.interface}/statistics/tx_packets"))]
+            rx, tx = [int(open(f"/sys/class/net/{self.interface}/statistics/rx_packets", "r").read()), int(open(f"/sys/class/net/{self.interface}/statistics/tx_packets", "r").read())]
             # print(f"Old: {rx} | {tx}")
             time.sleep(1)
-            new_rx, new_tx = [int(subprocess.getoutput(f"sudo cat /sys/class/net/{self.interface}/statistics/rx_packets")), int(subprocess.getoutput(f"sudo cat /sys/class/net/{self.interface}/statistics/tx_packets"))]
+            new_rx, new_tx = [int(open(f"/sys/class/net/{self.interface}/statistics/rx_packets", "r").read()), int(open(f"/sys/class/net/{self.interface}/statistics/tx_packets", "r").read())]
             # print(f"New: {new_rx} | {new_tx}")
             self.f_pps = 0
             self.f_pps = (tx - new_tx) - (rx - new_rx)
+            print(self.f_pps, end="\r")
