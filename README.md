@@ -12,3 +12,11 @@ Cyber Shield
 <p>4.cd Cyber-Shield</p>
 <p>5.pip3 install -r requirements.txt</p>
 <p>5.python3 shield.py</p>
+
+<h1 align="center">
+Our social's
+</h2>
+<div align="center">
+<img src="https://brandlogos.net/wp-content/uploads/2021/11/discord-logo.png"  width="96" height="96" alt="discord" />
+</div>
+ * [CyberShield Discord](https://discord.gg/n5ykgFGkHE)
