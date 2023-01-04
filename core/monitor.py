@@ -4,6 +4,7 @@ from .utilities.tools.pps import *
 from .fx.design import *
 from .utilities.config.config import *
 from .utilities.os import *
+from .utilities.hardware import *
 
 class CyberShield():
     current_interface: str
@@ -13,6 +14,7 @@ class CyberShield():
         self.sfx = ShieldFX()
         self.cfg = Config()
         self.os = OS()
+        self.hdw = Hardware()
         
         print("\033[?25l") # Hide Cursor
         print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end=" ") # Set Terminal Size
@@ -46,13 +48,13 @@ class CyberShield():
                 print(f"\x1b[{self.cfg.hdw.cpu_name_p[0]};{self.cfg.hdw.cpu_name_p[1]}f\x1b[38;2;{self.cfg.hdw.labels_c[0]};{self.cfg.hdw.labels_c[1]};{self.cfg.hdw.labels_c[2]}m", end="")
                 print(f"CPU Name: ", end="")
                 print(f"\x1b[38;2;{self.cfg.hdw.value_c[0]};{self.cfg.hdw.value_c[1]};{self.cfg.hdw.value_c[2]}m", end="")
-                print(self.cfg.hdw.cpu_name_p, end="")
+                print(self.hdw.info.cpu_name, end="")
                 print("\x1b[0m", end="")
             if self.cfg.hdw.cpu_cores_p != [0, 0]:
                 print(f"\x1b[{self.cfg.hdw.cpu_cores_p[0]};{self.cfg.hdw.cpu_cores_p[1]}f\x1b[38;2;{self.cfg.hdw.labels_c[0]};{self.cfg.hdw.labels_c[1]};{self.cfg.hdw.labels_c[2]}m", end="")
                 print(f"CPU Cores: ", end="")
                 print(f"\x1b[38;2;{self.cfg.hdw.value_c[0]};{self.cfg.hdw.value_c[1]};{self.cfg.hdw.value_c[2]}m", end="")
-                print(self.cfg.hdw.cpu_cores_p, end="")
+                print(self.hdw, end="")
                 print("\x1b[0m", end="")
             if self.cfg.hdw.cpu_count_p != [0, 0]:
                 print(f"\x1b[{self.cfg.hdw.cpu_count_p[0]};{self.cfg.hdw.cpu_count_p[1]}f\x1b[38;2;{self.cfg.hdw.labels_c[0]};{self.cfg.hdw.labels_c[1]};{self.cfg.hdw.labels_c[2]}m", end="")
