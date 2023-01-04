@@ -5,7 +5,7 @@ Cyber Shield
 </div>
 
 <p align="center">Installation:
-<p>Requid Python 3.9+</p>
+<p>Required Python 3.9+</p>
 <p>1.sudo apt udpate -y</p>
 <p>2.sudo apt install git -y</p>
 <p>3.git clone https://github.com/NefariousTheDev/Cyber-Shield.git</p>
