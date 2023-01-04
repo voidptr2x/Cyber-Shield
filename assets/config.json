@@ -1,6 +1,6 @@
 {
     "Terminal": {
-        "size": [32, 127],
+        "size": [32, 90],
         "title": "",
         "description": "",
         "version": 1.00,
@@ -8,9 +8,9 @@
     },
     "PPS": {
         "display": true,
-        "pps_p": [11, 60],
-        "pps_label_c": [255, 255, 0],
-        "pps_value_c": [0, 255, 0]
+        "pps_p": [13, 43],
+        "pps_label_c": [0, 0],
+        "pps_value_c": [0, 0]
     },
     "Graph": {
         "display": true,
@@ -29,36 +29,36 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
         
-        "os_name_p": [5, 3],
-        "os_kernel_p": [7, 3],
-        "os_version_p": [6, 3],
-        "shell_p": [8, 3]
+        "os_name_p": [3, 3],
+        "os_kernel_p": [5, 3],
+        "os_version_p": [4, 3],
+        "shell_p": [0, 0]
     },
     "Hardware": {
         "display": true,
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
 
-        "cpu_count_p": [0, 0],
-        "cpu_name_p": [13,3],
-        "cpu_cores_p": [0, 0],
-        "cpu_usage_p": [0, 0],
+        "cpu_count_p": [3, 20],
+        "cpu_name_p": [4, 20],
+        "cpu_cores_p": [5, 20],
+        "cpu_usage_p": [6, 20],
 
-        "gpu_name_p": [0, 0],
-        "gpu_cores_p": [0, 0],
-        "gpu_usage_p": [0, 0],
+        "gpu_name_p": [7, 20],
+        "gpu_cores_p": [8, 20],
+        "gpu_usage_p": [9, 20],
 
-        "memory_name_p": [0, 0],
-        "memory_capacity_p": [0, 0],
-        "memory_usage_p": [0, 0],
-        "memory_used_p": [0, 0],
-        "memory_free_p": [0, 0],
+        "memory_name_p": [10, 20],
+        "memory_capacity_p": [11, 20],
+        "memory_usage_p": [12, 20],
+        "memory_used_p": [13, 20],
+        "memory_free_p": [14, 20],
 
-        "hdd_name_p": [0, 0],
-        "hdd_capacity_p": [0, 0],
-        "hdd_used_p": [0, 0],
-        "hdd_free_p": [0, 0],
-        "hdd_usage_p": [0, 0]
+        "hdd_name_p": [15, 20],
+        "hdd_capacity_p": [16, 20],
+        "hdd_used_p": [17, 20],
+        "hdd_free_p": [18, 20],
+        "hdd_usage_p": [19, 20]
     },
     "Connection": {
         "display": true,
