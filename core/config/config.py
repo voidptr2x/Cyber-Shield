@@ -3,30 +3,26 @@ import os, json
 from .vars import *
 
 class Config():
-
+        json_file_path = "assets/config.json"
         def __init__(self) -> None:
-                if os.path.isfile("assets/config.json") == False: return
-                self.term = Terminal()
-                self.ppscfg = PPSConfig()
-                self.graph = GraphConfig()
-                self.conntable = ConnTable()
-                self.os = OSConfig()
-                self.hdw = HardwareConfig()
-                self.conn = SysConnection()
+                self.term = self.parseTerminal()
+                self.ppscfg = self.parsePPS()
+                self.graph = self.parseGraph()
+                self.conntable = self.parseConnTable()
+                self.os =  self.parseOS()
+                self.hdw = self.parseHardware()
+                self.conn = self.parseConnection()
                 
+                
+                if os.path.isfile(self.json_file_path) == False: return
                 self.config = json.loads(open("assets/config.json").read())
 
                 """
-                        Validate All Structures and fields
+                        - Validate All Structures and fields (Return error if config is not structured correctly)
+                        - Create a 'backup' system for config file along with the UI
+                        - Create a function to restore the config file with empty values
+
                 """
-                
-                self.parseTerminal()
-                self.parsePPS()
-                self.parseGraph()
-                self.parseConnTable()
-                self.parseOS()
-                self.parseHardware()
-                self.parseConnection 
 
         def parseTerminal(self) -> Terminal:
                 """
@@ -87,7 +83,7 @@ class Config():
                 self.hdw.hdd_free_p = self.config['Hardware']['hdd_free_p']
                 self.hdw.hdd_usage_p = self.config['Hardware']['hdd_usage_p']
         
-        def parseConnection(self) -> SysConnection:
+        def parseConnection(self) -> ConnectionConfig:
                 self.conn.display = self.config['Connection']['display']
                 self.conn.labels_c = self.config['Connection']['labels_c']
                 self.conn.value_c = self.config['Connection']['value_c']

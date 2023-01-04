@@ -64,7 +64,7 @@ class HardwareConfig:
     hdd_free_p: str
     hdd_usage_p: str
 
-class SysConnection:
+class ConnectionConfig:
     display: bool
     labels_c: str
     value_c: str

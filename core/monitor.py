@@ -1,10 +1,11 @@
 import os, sys, time, threading
 
-from .utilities.tools.pps import *
 from .fx.design import *
-from .utilities.config.config import *
-from .utilities.os import *
-from .utilities.hardware import *
+from .config.config import *
+
+from .tools.os import *
+from .tools.hardware import *
+from .tools.connection import *
 
 class CyberShield():
     current_interface: str
@@ -15,6 +16,7 @@ class CyberShield():
         self.cfg = Config()
         self.os = OS()
         self.hdw = Hardware()
+        self.pps = Connection("eth0")
         
         print("\033[?25l") # Hide Cursor
         print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end=" ") # Set Terminal Size
@@ -22,6 +24,7 @@ class CyberShield():
         print(self.sfx.render_ui(), end="") # Set UI
 
         self.set_info()
+        threading.Thread(target=self.pps.runPPS()).start()
         self.start_listener()
 
     def set_info(self) -> None:
@@ -118,8 +121,7 @@ class CyberShield():
                 print("\x1b[0m", end="")
  
     def start_listener(self) -> None:
-        self.pps = PPS("eth0")
 
         while True:
             print(f"\x1b[{self.cfg.ppscfg.pps_p[0]};{self.cfg.ppscfg.pps_p[1]}f", end=" ")
-            print(f"PPS: {self.pps.updatePPS()}")
+            print(f"PPS: {self.pps.f_pps}")
