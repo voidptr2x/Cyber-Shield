@@ -4,10 +4,11 @@ Cyber Shield
 <p>Helping the community protect their networks!</p>
 </div>
 
-Installation:
-Requid Python 3.9+
-1.sudo apt udpate -y
-2.sudo apt install git -y
-3.git clone https://github.com/NefariousTheDev/Cyber-Shield.git
-4.cd Cyber-Shield
-5.python3 shield.py
+<p align="center">Installation:
+<p>Requid Python 3.9+</p>
+<p>1.sudo apt udpate -y</p>
+<p>2.sudo apt install git -y</p>
+<p>3.git clone https://github.com/NefariousTheDev/Cyber-Shield.git</p>
+<p>4.cd Cyber-Shield</p>
+<p>5.pip3 install -r requirements.txt</p>
+<p>5.python3 shield.py</p>
