@@ -1,8 +1,8 @@
-<div align="center"> 
+<h1 align="center">
 Cyber Shield
 <p>The Official Cyber Shield Application Repo.</p>
 <p>Helping the community protect their networks!</p>
-</div>
+</h2>
 
 <p align="center">Installation:
 <p>Required Python 3.9+</p>
