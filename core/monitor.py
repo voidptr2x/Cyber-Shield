@@ -17,6 +17,10 @@ class CyberShield():
         self.os = OS()
         self.hdw = Hardware()
         self.pps = Connection("eth0")
+
+        """
+        Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
+        """
         
         print("\033[?25l") # Hide Cursor
         print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end=" ") # Set Terminal Size
