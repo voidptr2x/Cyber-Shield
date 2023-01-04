@@ -15,7 +15,6 @@ class Config():
 
                 """
                 self.term = self.parseTerminal()
-                self.ppscfg = self.parsePPS()
                 self.graph = self.parseGraph()
                 self.conntable = self.parseConnTable()
                 self.os =  self.parseOS()
