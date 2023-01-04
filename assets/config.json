@@ -6,12 +6,6 @@
         "version": 1.00,
         "motd": ""
     },
-    "PPS": {
-        "display": true,
-        "pps_p": [13, 43],
-        "pps_label_c": [0, 0],
-        "pps_value_c": [0, 0]
-    },
     "Graph": {
         "display": true,
         "data_c": [0, 0, 0],
@@ -68,6 +62,10 @@
         "wifi_adapter_p": [0, 0],
         "ms_p": [0, 0],
         "download_speed_p": [0, 0],
-        "upload_speed_p": [0, 0]
+        "upload_speed_p": [0, 0],
+        
+        "pps_p": [13, 43],
+        "pps_label_c": [0, 0],
+        "pps_value_c": [0, 0]
     }
 }
