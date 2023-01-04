@@ -17,7 +17,7 @@ class OS():
         self.retrieveShells()
 
     def retrieveOS(self) -> None:
-        self.info.os_name = open("/etc/os-release", "r").read().split("\n")[0].replace("PRETTY_NAME=\"", "").replace("NAME=\"", "").replace("\"", "")
+        self.info.os_name = open("/etc/os-release", "r").read().split("\n")[1].replace("PRETTY_NAME=\"", "").replace("NAME=\"", "").replace("\"", "")
         self.info.os_version = open("/etc/os-release", "r").read().split("\n")[2].replace("VERSION_ID=\"", "").replace("\"", "")
 
     def retrieveKernel(self) -> None:

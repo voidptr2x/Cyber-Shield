@@ -93,6 +93,6 @@ class Config():
                 self.conn.timeout = self.config['Connection']['timeout']
                 self.conn.diaply = self.config['Connection']['display']
                 self.conn.pps_p = self.config['Connection']['pps_p']
-                self.conn.pps_label_c = self.config['Connection']['pps_label_c']
-                self.conn.pps_value_c = self.config['Connection']['pps_value_c']
+                # self.conn.pps_label_c = self.config['Connection']['pps_label_c']
+                # self.conn.pps_value_c = self.config['Connection']['pps_value_c']
                 return self.conn

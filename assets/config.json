@@ -1,6 +1,6 @@
 {
     "Terminal": {
-        "size": [32, 90],
+        "size": [32, 105],
         "title": "",
         "description": "",
         "version": 1.00,
@@ -33,31 +33,31 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
 
-        "cpu_count_p": [3, 20],
-        "cpu_name_p": [4, 20],
-        "cpu_cores_p": [5, 20],
-        "cpu_usage_p": [6, 20],
+        "cpu_count_p": [11, 3],
+        "cpu_name_p": [12, 3],
+        "cpu_cores_p": [13, 3],
+        "cpu_usage_p": [14, 3],
 
-        "gpu_name_p": [7, 20],
-        "gpu_cores_p": [8, 20],
-        "gpu_usage_p": [9, 20],
+        "gpu_name_p": [15, 33],
+        "gpu_cores_p": [16, 33],
+        "gpu_usage_p": [17, 33],
 
-        "memory_name_p": [10, 20],
-        "memory_capacity_p": [11, 20],
-        "memory_usage_p": [12, 20],
-        "memory_used_p": [13, 20],
-        "memory_free_p": [14, 20],
+        "memory_name_p": [18, 33],
+        "memory_capacity_p": [19, 33],
+        "memory_usage_p": [20, 33],
+        "memory_used_p": [21, 33],
+        "memory_free_p": [22, 33],
 
-        "hdd_name_p": [15, 20],
-        "hdd_capacity_p": [16, 20],
-        "hdd_used_p": [17, 20],
-        "hdd_free_p": [18, 20],
-        "hdd_usage_p": [19, 20]
+        "hdd_name_p": [23, 33],
+        "hdd_capacity_p": [24, 33],
+        "hdd_used_p": [25, 33],
+        "hdd_free_p": [26, 33],
+        "hdd_usage_p": [27, 33]
     },
     "Connection": {
         "display": true,
-        "labels_c": [0, 0, 0],
-        "value_c": [0, 0, 0],
+        "labels_c": [255, 255, 0],
+        "value_c": [0, 255, 0],
         "ip": [0, 0],
         "port": [0 ,0],
         "key": [0, 0],
@@ -68,8 +68,6 @@
         "download_speed_p": [0, 0],
         "upload_speed_p": [0, 0],
         
-        "pps_p": [13, 43],
-        "pps_label_c": [0, 0],
-        "pps_value_c": [0, 0]
+        "pps_p": [13, 43]
     }
 }

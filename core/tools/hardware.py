@@ -1,6 +1,4 @@
-import os
-import psutil
-import platform
+import os, psutil, subprocess
         
 class HardwareInformation():
     """
@@ -45,12 +43,6 @@ class HardwareInformation():
     hdw.info.OBJECTS_HERE
 """
 
-# Get the CPU name from /proc/cpuinfo
-with open('/proc/cpuinfo', 'r') as f:
-    for line in f.readlines():
-        if line.startswith('model name'):
-            cpu_name = line.split(':')[1].strip()
- 
 # Get the Memory type from /proc/meminfo
 with open('/proc/meminfo', 'r') as f:
     for line in f.readlines():
@@ -69,7 +61,7 @@ class Hardware():
 
     def __fetchCPU(self) -> None:
         self.info.cpu_count = psutil.cpu_count()
-        self.info.cpu_name = cpu_name
+        self.info.cpu_name = subprocess.getoutput("lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\\1/p'")
         self.info.cpu_freq = psutil.cpu_freq()
         self.info.cpu_usage = psutil.cpu_percent()
 
