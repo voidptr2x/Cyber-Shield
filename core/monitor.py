@@ -13,8 +13,8 @@ class CyberShield():
     current_interface: str
     interfaces: list
     
-    def __init__(self) -> None:
-        self.sfx, self.cfg, self.os, self.hdw, self.pps = [ShieldFX(), Config(), OS(), Hardware(), Connection("eth0")]
+    def __init__(self, interface) -> None:
+        self.sfx, self.cfg, self.os, self.hdw, self.pps = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface)]
 
         """
         Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
