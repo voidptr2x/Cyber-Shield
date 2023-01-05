@@ -62,8 +62,13 @@ class Hardware():
     def __fetchCPU(self) -> None:
         self.info.cpu_count = psutil.cpu_count()
         self.info.cpu_name = subprocess.getoutput("lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\\1/p'")
-        self.info.cpu_freq = psutil.cpu_freq()
-        self.info.cpu_usage = psutil.cpu_percent()
+        
+        for line in open("/proc/cpuinfo").read().split("\n"):
+            if line.startswith("cpu cores"):
+                self.info.cpu_cores = line.split(":")[1].strip()
+                break
+        
+        self.info.cpu_usage = subprocess.getoutput("top -bn1 | sed -n '/Cpu/p' | awk '{print $2}' | sed 's/..,//'")
 
     def __fetchMemory(self) -> None:
         mem_info = psutil.virtual_memory()

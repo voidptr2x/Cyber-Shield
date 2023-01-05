@@ -1,6 +1,6 @@
 {
     "Terminal": {
-        "size": [32, 105],
+        "size": [32, 104],
         "title": "",
         "description": "",
         "version": 1.00,
@@ -37,6 +37,7 @@
         "cpu_name_p": [12, 3],
         "cpu_cores_p": [13, 3],
         "cpu_usage_p": [14, 3],
+        "cpu_freq_p": [14, 3],
 
         "gpu_name_p": [15, 33],
         "gpu_cores_p": [16, 33],
@@ -68,6 +69,6 @@
         "download_speed_p": [0, 0],
         "upload_speed_p": [0, 0],
         
-        "pps_p": [13, 43]
+        "pps_p": [4, 77]
     }
 }

@@ -41,7 +41,6 @@ class HardwareConfig:
     cpu_name_p: str
     cpu_cores_p: str
     cpu_usage_p: str
-
     gpu_name_p: str
     gpu_cores_p: str
     gpu_usage: str
