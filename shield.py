@@ -7,4 +7,4 @@ if len(sys.argv) > 1 or len(sys.argv) < 1:
     exit()
 
 # Validate interface here
-CyberShield(sys.argv[1])
+CyberShield(sys.argv[2])
