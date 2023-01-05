@@ -4,3 +4,20 @@ Cyber Shield
 <p>Helping the community protect their networks!</p>
 </div>
 
+# Requirements
+
+### Ubuntu
+```
+apt install python3 python3-pip
+pip3 install psutil
+```
+
+# How To Install
+
+### Ubuntu (Officially Created On 24.04)
+```
+apt install git
+git clone https://github.com/NefariousTheDev/Cyber-Shield.git
+cd Cyber-Shield
+python3 shield.py <interface>
+```
