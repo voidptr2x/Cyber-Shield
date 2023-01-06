@@ -33,13 +33,12 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
 
-        "cpu_count_p": [0, 0],
-        "cpu_name_p": [13, 3],
-        "cpu_cores_p": [14, 3],
-        "cpu_usage_p": [15, 3],
-        "cpu_freq_p": [0, 0],
+        "cpu_count_p": [11, 3],
+        "cpu_name_p": [12, 3],
+        "cpu_cores_p": [13, 3],
+        "cpu_usage_p": [14, 3],
+        "cpu_freq_p": [14, 3],
 
-<<<<<<< Updated upstream
         "gpu_name_p": [15, 3],
         "gpu_cores_p": [16, 3],
         "gpu_usage_p": [17, 3],
@@ -49,17 +48,6 @@
         "memory_usage_p": [18, 3],
         "memory_used_p": [18, 3],
         "memory_free_p": [19, 3],
-=======
-        "gpu_name_p": [0, 0],
-        "gpu_cores_p": [0, 0],
-        "gpu_usage_p": [0, 0],
-
-        "memory_type_p": [17, 3],
-        "memory_capacity_p": [18, 3],
-        "memory_usage_p": [19, 3],
-        "memory_used_p": [20, 3],
-        "memory_free_p": [21, 3],
->>>>>>> Stashed changes
 
         "hdd_name_p": [21, 3],
         "hdd_capacity_p": [22, 3],
