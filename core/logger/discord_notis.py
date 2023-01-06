@@ -1,67 +1,61 @@
+# author: e991f665b7e62df5a54fdef19053a4e75117b89
+
+# dependencies
 import requests
 
+class DiscordWebhook():
+  def __init__(self, **kwargs):
+    self.webhook = None # Default to None
 
-class WebNotis:
-    def __init__(self, ID, TOKEN):
-        self.ID = ID
-        self.TOKEN = TOKEN
-        self.url = f"https://discord.com/api/webhooks/{self.ID}/{self.TOKEN}"
-        self.headers = {
-            "Content-Type": "application/json"
-        }
-        
-    
-    def AttackNoti(self, ip, port, attackedport, pps, mbps, cpuload):
-        self.Title = "Under attack"
-        self.Description = f":shield: Filtering malicous IPS"
-        self.Embed = {
-            "username": "CyberShield Detection",
-            "embeds": [{
-                "fields": [
-                    {
-                    "name": "Server Information",
-                    "value": f"`IP` - **[{ip}]**\n`Port` - **[{port}]**\n`Attacked Port` - **[{attackedport}]**",
-                    "inline": False
-                    }, 
-                    {
-                    "name": "Incoming PPS",
-                    "value": f"[{pps}]",
-                    "inline": False
-                    }, 
-                    {
-                    "name": "Incoming MBPS",
-                    "value": f"[{mbps}]",
-                    "inline": False
-                    },
-                    {
-                    "name": "CPU Load",
-                    "value": f"[{cpuload}]",
-                    "inline": False
-                    }
-                ],
-            "title": self.Title,
-            "description": self.Description,
-            "color": "14177041"
-            }]
-        }
-        requests.post(self.url, headers=self.headers, json=self.Embed)
-    
-    def ErrorNoti(self, ):
-        self.Title = "Error Detected"
-        self.Embed = {
-            "username": "CyberShield Detection",
-            "embeds": [{
-                "fields": [{
-                    "name": ":warning: Error detected [Filename]",
-                    "value": "On line [blablabla]",
-                    "inline": False
-                }],
-            "title": self.Title,
-            "color": "14177041"
-            }]
-        }
-        requests.post(self.url, headers=self.headers, json=self.Embed)
+    self.headers = {
+      "User-Agent": "CyberShield (https://github.com/NefariousTheDev/Cyber-Shield, v3.0.0)",
+      "Content-Type": "application/json"
+    }
 
-#p = WebNotis("WEBHOOK_ID",  "WEBHOOK_TOKEN")
-#p.AttackNoti(ip="1.1.1.1", port="80", attackedport="1000", pps="100", mbps="1000", cpuload="3")
-#p.ErrorNoti()
+    if kwargs.get("url"):
+      self.webhook = kwargs.get("url")
+
+    if kwargs.get("id") and kwargs.get("token"):
+      self.webhook = f"https://discord.com/api/v10/webhooks/{kwargs.get('id')}/{kwargs.get('token')}"
+
+  def attack_notification(self, ip: str, port: str, attacked_port: str, pps: str, mbps: str, cpu: str):
+    return self.send({
+      "username": "CyberShield Detection",
+      "embeds": [{
+        "title": "Under attack",
+        "description": ":shield: Filtering malicious IP addresses!",
+        "color": 14177041,
+        "fields": [{
+          "name": "Server Information",
+          "value": f"`IP` - **[{ip}]**\n`Port` - **[{port}]**\n`Attacked Port` - **[{attacked_port}]**"
+        }, {
+          "name": "Incoming PPS",
+          "value": f"[{pps}]"
+        }, {
+          "name": "Incoming MBPS",
+          "value": f"[{mbps}]"
+        }, {
+          "name": "CPU Load",
+          "value": f"[{cpu}]"
+        }]
+      }]
+    })
+
+  def error_notification(self):
+    return self.send({
+      "username": "CyberShield Detection",
+      "embeds": [{
+        "title": "Error Detected",
+        "color": 14177041,
+        "fields": [{
+          "name": ":warning: Error detected [filename]",
+          "value": "On line [blablabla]"
+        }]
+      }]
+    })
+
+  def send(self, embed) -> bool:
+    if not self.webhook:
+      return False
+
+    return requests.post(self.webhook, headers=self.headers, json=embed).status_code == 204
