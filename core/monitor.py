@@ -39,8 +39,8 @@ class CyberShield():
     def set_info(self) -> None:
         if self.cfg.os.display == True:
             if self.cfg.os.os_name_p != [0, 0]:
-                TerminalControl.placeText(self.cfg.os.os_name_p, self.cfg.os.labels_c, "OS: ", self.cfg.os.value_c, self.os.info.os_name)
-                TerminalControl.placeText(self.cfg.os.os_version_p, self.cfg.os.labels_c, "OS Version: ", self.cfg.os.value_c, self.os.info.os_version)
+                TerminalControl.placeText(self.cfg.os.os_name_p, self.cfg.os.labels_c, "OS: ", self.cfg.os.value_c, self.os.info.os_release.get("pretty_name"))
+                TerminalControl.placeText(self.cfg.os.os_version_p, self.cfg.os.labels_c, "OS Version: ", self.cfg.os.value_c, self.os.info.os_release.get("version_id"))
                 TerminalControl.placeText(self.cfg.os.os_kernel_p, self.cfg.os.labels_c, "OS Kernel: ", self.cfg.os.value_c, self.os.info.os_kernel)
 
         if self.cfg.hdw.display == True:
