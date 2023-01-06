@@ -71,7 +71,7 @@ class Config():
                 self.hdw.gpu_name_p = self.config['Hardware']['gpu_name_p']
                 self.hdw.gpu_cores_p = self.config['Hardware']['gpu_cores_p']
                 self.hdw.gpu_usage_p = self.config['Hardware']['gpu_usage_p']
-                self.hdw.memory_name_p = self.config['Hardware']['memory_name_p']
+                self.hdw.memory_name_p = self.config['Hardware']['memory_type_p']
                 self.hdw.memory_capacity_p = self.config['Hardware']['memory_capacity_p']
                 self.hdw.memory_usage_p = self.config['Hardware']['memory_usage_p']
                 self.hdw.memory_used_p = self.config['Hardware']['memory_used_p']

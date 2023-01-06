@@ -45,7 +45,7 @@ class HardwareConfig:
     gpu_cores_p: str
     gpu_usage: str
 
-    memory_name_p: str
+    memory_type_p: str
     memory_capacity_p: str
     memory_usage_p: str
     memory_used_p: str
