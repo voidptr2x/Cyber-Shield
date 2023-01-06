@@ -1,4 +1,4 @@
-import os, sys, time, subprocess
+import os
 
 class ShieldFX():
     ui_path = "assets/ui.txt"

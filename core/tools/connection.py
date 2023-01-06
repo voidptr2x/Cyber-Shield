@@ -1,4 +1,4 @@
-import os, sys, time, subprocess
+import time
 
 class Connection():
     f_pps: int

@@ -1,4 +1,4 @@
-import os, sys, time, threading
+import os, time, threading
 
 from .fx.design import *
 from .config.config import *
@@ -9,25 +9,32 @@ from .tools.connection import *
 
 from .utilities.term_control import *
 
+
 class CyberShield():
     current_interface: str
     interfaces: list
     
     def __init__(self, interface) -> None:
-        self.sfx, self.cfg, self.os, self.hdw, self.pps = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface)]
+        try:
+            self.sfx, self.cfg, self.os, self.hdw, self.pps = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface)]
 
-        """
-        Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
-        """
-        print(chr(27) + "[2J") # Clear Screen
-        print("\033[?25l\x1b[37m", end="") # Hide Cursor
-        print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end="") # Set Terminal Size
-        print("\x1b[0;0f", end="")
-        print(self.sfx.render_ui(), end="") # Set UI
+            """
+            Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
+            """
+            print(chr(27) + "[2J") # Clear Screen
+            print("\033[?25l\x1b[37m", end="") # Hide Cursor
+            print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end="") # Set Terminal Size
+            print("\x1b[0;0f", end="")
+            print(self.sfx.render_ui(), end="") # Set UI
 
-        self.set_info()
-        threading.Thread(target=self.pps.runPPS).start()
-        self.start_listener()
+            self.set_info()
+            threading.Thread(target=self.pps.runPPS).start()
+            self.start_listener()
+        except KeyboardInterrupt:
+                print(chr(27) + "[2J") # Clear Screen
+                print("\033[0m", end="") # unfuck the terminal
+                print("\033[?25h", end="") # unfuck the terminal some more
+                os._exit(1)
 
     def set_info(self) -> None:
         if self.cfg.os.display == True:

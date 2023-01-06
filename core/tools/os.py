@@ -1,8 +1,6 @@
-# author: e991f665b7e62df5a54fdef19053a4e75117b89
-
-# dependencies
 import os
 from os.path import exists
+
 
 class OSInformation():
   os_release: dict[str, str]
