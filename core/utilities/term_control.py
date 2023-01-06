@@ -1,5 +1,3 @@
-import os, time, sys
-
 class TerminalControl:
     def placeText(position: list, label_c: list, label: str, value_c: list, value: str):
         print(f"\x1b[{position[0]};{position[1]}f\x1b[38;2;{label_c[0]};{label_c[1]};{label_c[2]}m", end="")

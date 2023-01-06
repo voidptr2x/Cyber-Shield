@@ -1,4 +1,4 @@
-import os, sys, time, subprocess
+import subprocess
 
 class Netstat():
     data = ""

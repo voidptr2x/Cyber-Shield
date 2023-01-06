@@ -1,4 +1,4 @@
-import os, sys, time, platform, subprocess
+import platform, subprocess
 
 class OSInformation():
     os_name: str

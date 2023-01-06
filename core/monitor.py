@@ -1,4 +1,4 @@
-import os, sys, time, threading, atexit
+import os, time, threading
 
 from .fx.design import *
 from .config.config import *
