@@ -62,6 +62,6 @@ class CyberShield():
             TerminalControl.placeTextAlt(self.cfg.conn.pps_p, "               ")
             TerminalControl.placeText(self.cfg.conn.pps_p, self.cfg.conn.labels_c, "PPS: ", self.cfg.conn.value_c, self.pps.f_pps)
             
-            TerminalControl.placeTextAlt(self.cfg.hdw.cpu_usage_p, "               ")
+            TerminalControl.placeTextAlt(self.cfg.hdw.cpu_usage_p, "                  ")
             TerminalControl.placeText(self.cfg.hdw.cpu_usage_p, self.cfg.hdw.labels_c, "CPU Usage: ", self.cfg.hdw.value_c, self.hdw.info.cpu_usage)
             time.sleep(1)

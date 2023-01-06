@@ -18,7 +18,7 @@ class Hardware():
     self.info = HardwareInformation() # This is pointless
 
     self.info.cpu_info = self.get_cpu()
-    self.info.cpu_usage = "0.0"
+    self.info.cpu_usage = "0.00"
 
     self.info.mem_info = self.get_memory()
     self.info.mem_name = "N/A" # TODO: Make something to find this
