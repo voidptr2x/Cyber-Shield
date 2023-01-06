@@ -45,15 +45,15 @@ class CyberShield():
 
         if self.cfg.hdw.display == True:
             if self.cfg.hdw.cpu_name_p != [0, 0]:
-                TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_name)
-                TerminalControl.placeText(self.cfg.hdw.cpu_cores_p, self.cfg.hdw.labels_c, "CPU Cores: ", self.cfg.hdw.value_c, self.hdw.info.cpu_cores)
-                TerminalControl.placeText(self.cfg.hdw.memory_name_p, self.cfg.hdw.labels_c, "Memory Name: ", self.cfg.hdw.value_c, self.hdw.info.memory_name)
-                TerminalControl.placeText(self.cfg.hdw.memory_capacity_p, self.cfg.hdw.labels_c, "Memory Capacity: ", self.cfg.hdw.value_c, self.hdw.info.memory_capacity)
-                TerminalControl.placeText(self.cfg.hdw.memory_used_p, self.cfg.hdw.labels_c, "Memory Used: ", self.cfg.hdw.value_c, self.hdw.info.memory_used)
-                TerminalControl.placeText(self.cfg.hdw.memory_free_p, self.cfg.hdw.labels_c, "Memory Free: ", self.cfg.hdw.value_c, self.hdw.info.memory_free)
+                TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_info.get("cpu_name"))
+                TerminalControl.placeText(self.cfg.hdw.cpu_cores_p, self.cfg.hdw.labels_c, "CPU Cores: ", self.cfg.hdw.value_c, self.hdw.info.cpu_info.get("cpu_cores"))
+                TerminalControl.placeText(self.cfg.hdw.memory_name_p, self.cfg.hdw.labels_c, "Memory Name: ", self.cfg.hdw.value_c, self.hdw.info.mem_name)
+                TerminalControl.placeText(self.cfg.hdw.memory_capacity_p, self.cfg.hdw.labels_c, "Memory Capacity: ", self.cfg.hdw.value_c, f"{self.hdw.info.mem_info.get('mem_total')} Mb")
+                TerminalControl.placeText(self.cfg.hdw.memory_used_p, self.cfg.hdw.labels_c, "Memory Used: ", self.cfg.hdw.value_c, f"{self.hdw.info.mem_info.get('mem_used')} Mb")
+                TerminalControl.placeText(self.cfg.hdw.memory_free_p, self.cfg.hdw.labels_c, "Memory Free: ", self.cfg.hdw.value_c, f"{self.hdw.info.mem_info.get('mem_free')} Mb")
                 TerminalControl.placeText(self.cfg.hdw.hdd_name_p, self.cfg.hdw.labels_c, "HDD Name: ", self.cfg.hdw.value_c, self.hdw.info.hdd_name)
-                TerminalControl.placeText(self.cfg.hdw.hdd_capacity_p, self.cfg.hdw.labels_c, "HDD Capacity: ", self.cfg.hdw.value_c, self.hdw.info.hdd_capacity)
-                TerminalControl.placeText(self.cfg.hdw.hdd_usage_p, self.cfg.hdw.labels_c, "HDD Usage: ", self.cfg.hdw.value_c, self.hdw.info.hdd_usage)
+                TerminalControl.placeText(self.cfg.hdw.hdd_capacity_p, self.cfg.hdw.labels_c, "HDD Capacity: ", self.cfg.hdw.value_c, f"{self.hdw.info.hdd_info.get('hdd_capacity')} Gb")
+                TerminalControl.placeText(self.cfg.hdw.hdd_usage_p, self.cfg.hdw.labels_c, "HDD Usage: ", self.cfg.hdw.value_c, f"{self.hdw.info.hdd_info.get('hdd_used')} Gb")
 
                 
 
