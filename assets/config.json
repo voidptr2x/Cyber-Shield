@@ -26,7 +26,7 @@
         "os_name_p": [5, 3],
         "os_kernel_p": [7, 3],
         "os_version_p": [6, 3],
-        "shell_p": [0, 0]
+        "shell_p": [8, 3]
     },
     "Hardware": {
         "display": true,
@@ -38,13 +38,14 @@
         "cpu_cores_p": [13, 3],
         "cpu_usage_p": [14, 3],
         "cpu_freq_p": [14, 3],
+        "cpu_arch": [15, 3],
 
         "gpu_name_p": [15, 3],
         "gpu_cores_p": [16, 3],
         "gpu_usage_p": [17, 3],
 
         "memory_type_p": [16, 3],
-        "memory_capacity_p": [17, 3],
+        "memory_capacity_p": [15, 3],
         "memory_usage_p": [18, 3],
         "memory_used_p": [18, 3],
         "memory_free_p": [19, 3],

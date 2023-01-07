@@ -1,29 +1,55 @@
 import os, sys, time, platform, subprocess
 
-class OSInformation():
-    os_name: str
-    os_version: str
-    os_kernel: str
+"""
+This file needs functions to retrieve all these information that will be displayed on the console 
 
-    os_shells: str
-    os_current_shell: str
+    "os_name_p": [5, 3],
+        "os_kernel_p": [7, 3],
+        "os_version_p": [6, 3],
+        "shell_p": [8, 3]
+
+OS Information from file /etc/os-release | Grabbing information from the file!
+
+    PRETTY_NAME="Ubuntu 22.04.1 LTS"
+    NAME="Ubuntu"
+    VERSION_ID="22.04"
+    VERSION="22.04.1 LTS (Jammy Jellyfish)"
+    VERSION_CODENAME=jammy
+    ID=ubuntu
+    ID_LIKE=debian
+    HOME_URL="https://www.ubuntu.com/"
+    SUPPORT_URL="https://help.ubuntu.com/"
+    BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+    PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+    UBUNTU_CODENAME=jammy
+"""
+class OS_Info():
+    _name: str
+    _kernel: str
+    _version: str
+    _shell: str
 
 class OS():
+    info: OS_Info
     def __init__(self) -> None:
-        self.info = OSInformation()
-
-        self.retrieveOS()
+        self.info = OS_Info()
+        self.os_release = open("/etc/os-release", "r")
+        self.parseOS()
         self.retrieveKernel()
         self.retrieveShells()
 
-    def retrieveOS(self) -> None:
-        self.info.os_name = open("/etc/os-release", "r").read().split("\n")[1].replace("PRETTY_NAME=\"", "").replace("NAME=\"", "").replace("\"", "")
-        self.info.os_version = open("/etc/os-release", "r").read().split("\n")[2].replace("VERSION_ID=\"", "").replace("\"", "")
+    def parseOS(self) -> OS_Info:
+        for line in self.os_release.read().split("\n"):
+            if line.startswith("NAME=\""):
+                self.info._name = line.replace("NAME=\"", "").replace("\"", "") 
+
+            if line.startswith("VERSION_ID=\""):
+                self.info._version = line.replace("VERSION_ID=\"", "").replace("\"", "")
+        self.os_release.close()
+        return self.info
 
     def retrieveKernel(self) -> None:
-        self.info.os_kernel = platform.release()
+        self.info._kernel = platform.release()
 
     def retrieveShells(self) -> None:
-        self.info.os_shells = subprocess.getoutput("cat /etc/shells").split("\n")[1:]
-        self.info.os_current_shell = subprocess.getoutput("echo $SHELL")
-        
+        self.info._shell = os.environ['SHELL']
