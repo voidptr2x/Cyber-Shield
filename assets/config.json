@@ -33,11 +33,11 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
 
-        "cpu_count_p": [11, 3],
+        "cpu_count_p": [0, 0],
         "cpu_name_p": [12, 3],
         "cpu_cores_p": [13, 3],
         "cpu_usage_p": [14, 3],
-        "cpu_freq_p": [14, 3],
+        "cpu_freq_p": [0, 0],
         "cpu_arch": [15, 3],
 
         "gpu_name_p": [15, 3],
@@ -50,11 +50,11 @@
         "memory_used_p": [17, 3],
         "memory_free_p": [18, 3],
 
-        "hdd_name_p": [21, 3],
-        "hdd_capacity_p": [22, 3],
-        "hdd_used_p": [25, 3],
-        "hdd_free_p": [26, 3],
-        "hdd_usage_p": [23, 3]
+        "hdd_name_p": [20, 3],
+        "hdd_capacity_p": [21, 3],
+        "hdd_used_p": [22, 3],
+        "hdd_free_p": [23, 3],
+        "hdd_usage_p": [24, 3]
     },
     "Connection": {
         "display": true,
