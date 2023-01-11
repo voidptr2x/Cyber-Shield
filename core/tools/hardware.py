@@ -1,86 +1,102 @@
-import os, psutil, subprocess
-        
-class HardwareInformation():
-    """
-    Hardware
-    """
-    cpu_count: int
-    cpu_name: str
-    cpu_cores: str
-    cpu_freq: str
-    cpu_usage: str
-
-    """
-    Memory Information
-    """
-    memory_type: str
-    memory_capacity: str
-    memory_used: str
-    memory_free: str
-
-    """
-    GPU Information
-    """
-    gpu_name: str
-    gpu_cores: str
-    gpu_freq: str
-    gpu_usage: str
-
-    """
-    Hard drive Information
-    """
-    hdd_name: str
-    hdd_capacity: str
-    hdd_used: set
-    hdd_free: str
-    hdd_usage: str
-
-
 """
-    Use Example:
-    
-    hdw = Hardware()
-    hdw.info.OBJECTS_HERE
+Hardware Info Module
+
+@title: Hardware.py
+@description: Retrieving hardware information!
+@since: 1/10/23
+
+########################################################
+
+To-do: Functions to grab GPU information!
+
+########################################################
+
+Application Output:
+
+root@csmain:~/pytools# python3 hdw.py
+Cyber Shield Hardware Module
+CPU Name: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
+CPU Cores: 1
+CPU Usage: 26.3
+======================================
+Memory Capacity: 4GB
+Memory Free: 3GB
+Memory Used: 1GB
+======================================
+HDD Capacity: 39GB
+HDD Used: 5GB
+HDD Free: 32GB
 """
+import os, sys, time, subprocess, psutil
 
-# Get the Memory type from /proc/meminfo
-with open('/proc/meminfo', 'r') as f:
-    for line in f.readlines():
-        if line.startswith('MemTotal'):
-            memory_type = line.split(':')[1].strip()
+class Hardware_Info:
+        cpu_cores: int
+        cpu_name: str
+        cpu_usage: str   
 
- # Get the HDD name from /sys/block directory            
-hdd_name = os.listdir('/sys/block')[0]
+        memory_type: str ## Still needed (DDR3/4)
+        memory_capacity: str
+        memory_used: str
+        memory_free: str
+
+        """ ALL GPU INFO IS STILL NEEEDED """    
+        gpu_name: str
+        gpu_cores: str
+        gpu_freq: str
+        gpu_usage: str
+
+        hdd_name: str ## Still needed
+        hdd_capacity: str
+        hdd_used: str
+        hdd_free: str
+        hdd_usage: str
 
 class Hardware():
-    def __init__(self) -> None:
-        self.info = HardwareInformation()
-        self.__fetchCPU()
-        self.__fetchMemory()
-        self.__fetchHDD()
+        info: Hardware_Info
+        def __init__(self) -> None:
+                self.info = Hardware_Info()
+                self.cpu_info, self.mem_info, self.hdd_info = self._retrieveInfo()
 
-    def __fetchCPU(self) -> None:
-        self.info.cpu_count = psutil.cpu_count()
-        self.info.cpu_name = subprocess.getoutput("lscpu | sed -nr '/Model name/ s/.*:\s*(.*) @ .*/\\1/p'")
-        
-        for line in open("/proc/cpuinfo").read().split("\n"):
-            if line.startswith("cpu cores"):
-                self.info.cpu_cores = line.split(":")[1].strip()
-                break
-        
-        self.info.cpu_usage = subprocess.getoutput("top -bn1 | sed -n '/Cpu/p' | awk '{print $2}' | sed 's/..,//'")
+        def _updateInfo(self) -> Hardware_Info:
+                self._retrieveInfo()
+                self.parseOS()
+                self.parseMEM()
+                self.retrieveHDD()
 
-    def __fetchMemory(self) -> None:
-        mem_info = psutil.virtual_memory()
-        self.info.memory_type = memory_type
-        self.info.memory_capacity = mem_info.total / (1024 ** 2)
-        self.info.memory_used = mem_info.used / (1024 ** 2)
-        self.info.memory_free = mem_info.free / (1024 ** 2)
+                return self.info
 
-    
-    def __fetchHDD(self) -> None:
-        disk_info = psutil.disk_usage('/')
-        self.info.hdd_name = hdd_name
-        self.info.hdd_capacity = disk_info.total / (1024 ** 3)
-        self.info.hdd_usage = disk_info.used / (1024 ** 3)
-        self.info.hdd_free = disk_info.free / (1024 ** 3)
+        def _retrieveInfo(self) -> None:
+                cpu_info, mem_info, hdd_info = [open("/proc/cpuinfo", "r"), open("/proc/meminfo", "r"), psutil.disk_usage("/")]
+                cpu, mem = [cpu_info.read(), mem_info.read()]
+
+                cpu_info.close()
+                mem_info.close()
+
+                return [cpu, mem, hdd_info]
+
+        def parseOS(self) -> Hardware_Info:
+                for line in self.cpu_info.split("\n"):
+                        if line.startswith("cpu cores"): self.info.cpu_cores = line.replace("cpu cores", "").replace(":", "").strip()
+
+                        if line.startswith("model name"): self.info.cpu_name = line.replace("model name", "").replace(":", "").strip().split("@")[0]
+
+                self.info.cpu_usage = subprocess.getoutput("top -bn1 | sed -n '/Cpu/p' | awk '{print $2}' | sed 's/..,//'")
+
+                return self.info
+
+        def parseMEM(self) -> Hardware_Info:
+                for line in self.mem_info.split("\n"):
+                        if line.startswith("MemTotal:"): self.info.memory_capacity = round(int(line.replace("MemTotal:", "").replace("kB", "").strip()) / 1000000)
+
+                        if line.startswith("MemFree:"): self.info.memory_free = round(int(line.replace("MemFree:" ,"").replace("kB", "").strip()) / 1000000)
+
+                self.info.memory_used = self.info.memory_capacity - self.info.memory_free
+
+                return self.info
+
+        def retrieveHDD(self) -> Hardware_Info:
+                self.info.hdd_capacity = round(self.hdd_info.total / (2**30))
+                self.info.hdd_used = round(self.hdd_info.used / (2**30))
+                self.info.hdd_free = round(self.hdd_info.free / (2**30))
+
+                return self.info

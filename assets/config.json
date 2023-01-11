@@ -44,11 +44,11 @@
         "gpu_cores_p": [16, 3],
         "gpu_usage_p": [17, 3],
 
-        "memory_type_p": [16, 3],
-        "memory_capacity_p": [15, 3],
-        "memory_usage_p": [18, 3],
-        "memory_used_p": [18, 3],
-        "memory_free_p": [19, 3],
+        "memory_type_p": [0, 0],
+        "memory_capacity_p": [16, 3],
+        "memory_usage_p": [19, 3],
+        "memory_used_p": [17, 3],
+        "memory_free_p": [18, 3],
 
         "hdd_name_p": [21, 3],
         "hdd_capacity_p": [22, 3],

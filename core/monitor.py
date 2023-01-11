@@ -24,6 +24,7 @@ class CyberShield():
         print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end="") # Set Terminal Size
         print("\x1b[0;0f", end="")
         print(self.sfx.render_ui(), end="") # Set UI
+        self.hdw._updateInfo()
 
         self.set_info()
         threading.Thread(target=self.pps.runPPS).start()
@@ -38,8 +39,11 @@ class CyberShield():
 
         if self.cfg.hdw.display == True:
             if self.cfg.hdw.cpu_name_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_name)
-            if self.cfg.hdw.cpu_name_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_cores_p, self.cfg.hdw.labels_c, "CPU Cores: ", self.cfg.hdw.value_c, self.hdw.info.cpu_cores)
-            if self.cfg.hdw.memory_capacity_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.memory_capacity_p, self.cfg.hdw.labels_c, "Memory Capacity: ", self.cfg.hdw.value_c, self.hdw.info.memory_capacity)
+            if self.cfg.hdw.cpu_cores_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_cores_p, self.cfg.hdw.labels_c, "CPU Cores: ", self.cfg.hdw.value_c, self.hdw.info.cpu_cores)
+
+            if self.cfg.hdw.memory_capacity_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.memory_capacity_p, self.cfg.hdw.labels_c, "Memory Capacity: ", self.cfg.hdw.value_c, f"{self.hdw.info.memory_capacity}GB")
+            if self.cfg.hdw.memory_used_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.memory_used_p, self.cfg.hdw.labels_c, "Memory Used: ", self.cfg.hdw.value_c, f"{self.hdw.info.memory_used}/{self.hdw.info.memory_capacity}GB")
+            if self.cfg.hdw.memory_free_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.memory_free_p, self.cfg.hdw.labels_c, "Memory Free: ", self.cfg.hdw.value_c, f"{self.hdw.info.memory_free}GB")
 
     def start_listener(self) -> None:
         while True:

@@ -27,7 +27,6 @@ HDD Capacity: 39GB
 HDD Used: 5GB
 HDD Free: 32GB
 """
--
 import os, sys, time, subprocess, psutil
 
 class Hardware_Info:
@@ -58,6 +57,14 @@ class Hardware():
                 self.info = Hardware_Info()
                 self.cpu_info, self.mem_info, self.hdd_info = self._retrieveInfo()
 
+        def _updateInfo(self) -> Hardware_Info:
+                self._retrieveInfo()
+                self.parseOS()
+                self.parseMEM()
+                self.retrieveHDD()
+
+                return self.info
+
         def _retrieveInfo(self) -> None:
                 cpu_info, mem_info, hdd_info = [open("/proc/cpuinfo", "r"), open("/proc/meminfo", "r"), psutil.disk_usage("/")]
                 cpu, mem = [cpu_info.read(), mem_info.read()]
@@ -67,7 +74,7 @@ class Hardware():
 
                 return [cpu, mem, hdd_info]
 
-        def parseCPU(self) -> Hardware_Info:
+        def parseOS(self) -> Hardware_Info:
                 for line in self.cpu_info.split("\n"):
                         if line.startswith("cpu cores"): self.info.cpu_cores = line.replace("cpu cores", "").replace(":", "").strip()
 

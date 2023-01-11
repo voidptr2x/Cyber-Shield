@@ -13,13 +13,13 @@ class OS():
         self.os_release = open("/etc/os-release", "r")
 
         self.parseOS()
-        self.retrieveKernel()
         self.retrieveShells()
+        self.retrieveKernel()
 
     def parseOS(self) -> OS_Info:
         for line in self.os_release.read().split("\n"):
             if line.startswith("NAME=\""):
-                self.info._name = line.replace("NAME=\"", "").replace("\"", "") 
+                self.info._name = line.replace("NAME=\"", "").replace("\"", "")
 
             if line.startswith("VERSION_ID=\""):
                 self.info._version = line.replace("VERSION_ID=\"", "").replace("\"", "")
