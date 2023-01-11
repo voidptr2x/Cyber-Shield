@@ -8,10 +8,10 @@ class TerminalControl:
     def listText(position: list, c: str, value: str) -> None:
         c = position[0]
         for t in value.split("\n"):
-            TerminalControl.addText(c, t)
+            TerminalControl.placeTextAlt(c, t)
             c+=1
         
-    def addText(position: list, value: str):
+    def placeTextAlt(position: list, value: str):
         print(f"\x1b[{position[0]};{position[1]}f", end="")
         print(f"{value}", end="")
         print("\x1b[37m", end="")
