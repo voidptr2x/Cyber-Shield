@@ -31,13 +31,13 @@ class CyberShield():
         self.start_listener()
 
     def set_info(self) -> None:
-        if self.cfg.os.display == True:
+        if self.cfg.os.display:
             if self.cfg.os.os_name_p != [0, 0]: TerminalControl.placeText(self.cfg.os.os_name_p, self.cfg.os.labels_c, "OS: ", self.cfg.os.value_c, self.os.info._name)
             if self.cfg.os.os_version_p != [0, 0]: TerminalControl.placeText(self.cfg.os.os_version_p, self.cfg.os.labels_c, "OS Version: ", self.cfg.os.value_c, self.os.info._version)
             if self.cfg.os.os_kernel_p != [0, 0]: TerminalControl.placeText(self.cfg.os.os_kernel_p, self.cfg.os.labels_c, "OS Kernel: ", self.cfg.os.value_c, self.os.info._kernel)
             if self.cfg.os.shell_p != [0, 0]: TerminalControl.placeText(self.cfg.os.shell_p, self.cfg.os.labels_c, "Shell: ", self.cfg.os.value_c, self.os.info._shell)
 
-        if self.cfg.hdw.display == True:
+        if self.cfg.hdw.display:
             if self.cfg.hdw.cpu_name_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_name)
             if self.cfg.hdw.cpu_cores_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_cores_p, self.cfg.hdw.labels_c, "CPU Cores: ", self.cfg.hdw.value_c, self.hdw.info.cpu_cores)
 
