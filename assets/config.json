@@ -1,6 +1,6 @@
 {
     "Terminal": {
-        "size": [32, 104],
+        "size": [35, 113],
         "title": "",
         "description": "",
         "version": 1.00,
@@ -8,6 +8,8 @@
     },
     "Graph": {
         "display": true,
+        "graph_layout_p": [10, 36],
+        "graph_p": [11, 44],
         "data_c": [0, 0, 0],
         "attacked_data_c": [0, 0, 0],
         "border_c": "{RED}"
@@ -23,10 +25,10 @@
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
         
-        "os_name_p": [5, 3],
-        "os_kernel_p": [7, 3],
-        "os_version_p": [6, 3],
-        "shell_p": [8, 3]
+        "os_name_p": [4, 3],
+        "os_version_p": [5, 3],
+        "os_kernel_p": [6, 3],
+        "shell_p": [7, 3]
     },
     "Hardware": {
         "display": true,
@@ -34,42 +36,42 @@
         "value_c": [0, 255, 0],
 
         "cpu_count_p": [0, 0],
-        "cpu_name_p": [12, 3],
-        "cpu_cores_p": [13, 3],
-        "cpu_usage_p": [14, 3],
+        "cpu_name_p": [11, 3],
+        "cpu_cores_p": [12, 3],
+        "cpu_usage_p": [13, 3],
         "cpu_freq_p": [0, 0],
-        "cpu_arch": [15, 3],
+        "cpu_arch": [14, 3],
 
         "gpu_name_p": [15, 3],
         "gpu_cores_p": [16, 3],
         "gpu_usage_p": [17, 3],
 
         "memory_type_p": [0, 0],
-        "memory_capacity_p": [16, 3],
-        "memory_usage_p": [19, 3],
-        "memory_used_p": [17, 3],
-        "memory_free_p": [18, 3],
+        "memory_capacity_p": [15, 3],
+        "memory_usage_p": [16, 3],
+        "memory_used_p": [18, 3],
+        "memory_free_p": [17, 3],
 
-        "hdd_name_p": [20, 3],
-        "hdd_capacity_p": [21, 3],
-        "hdd_used_p": [22, 3],
-        "hdd_free_p": [23, 3],
-        "hdd_usage_p": [24, 3]
+        "hdd_name_p": [19, 3],
+        "hdd_capacity_p": [20, 3],
+        "hdd_used_p": [21, 3],
+        "hdd_free_p": [22, 3],
+        "hdd_usage_p": [23, 3]
     },
     "Connection": {
         "display": true,
         "labels_c": [255, 255, 0],
         "value_c": [0, 255, 0],
-        "ip": [0, 0],
+        "ip": [4, 76],
         "port": [0 ,0],
         "key": [0, 0],
         "timeout": [0, 0],
 
         "wifi_adapter_p": [0, 0],
         "ms_p": [0, 0],
-        "download_speed_p": [0, 0],
-        "upload_speed_p": [0, 0],
+        "download_speed_p": [6, 76],
+        "upload_speed_p": [5, 76],
         
-        "pps_p": [4, 77]
+        "pps_p": [7, 76]
     }
 }

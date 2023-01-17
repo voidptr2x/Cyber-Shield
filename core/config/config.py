@@ -38,6 +38,8 @@ class Config():
 
         def parseGraph(self) -> GraphConfig:
                 self.graph.display = self.config['Graph']['display']
+                self.graph.graph_layout_p = self.config['Graph']['graph_layout_p']
+                self.graph.graph_p = self.config['Graph']['graph_p']
                 self.graph.data_c = self.config['Graph']['data_c']
                 self.graph.attacked_data_c = self.config['Graph']['attacked_data_c']
                 self.graph.border_c = self.config['Graph']['border_c']
@@ -93,6 +95,6 @@ class Config():
                 self.conn.timeout = self.config['Connection']['timeout']
                 self.conn.diaply = self.config['Connection']['display']
                 self.conn.pps_p = self.config['Connection']['pps_p']
-                # self.conn.pps_label_c = self.config['Connection']['pps_label_c']
-                # self.conn.pps_value_c = self.config['Connection']['pps_value_c']
+                self.conn.upload_speed_p = self.config['Connection']['upload_speed_p']
+                self.conn.download_speed_p = self.config['Connection']['download_speed_p']
                 return self.conn

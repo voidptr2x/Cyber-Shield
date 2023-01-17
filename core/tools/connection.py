@@ -1,10 +1,34 @@
-import time
+import time, requests, threading
 
 class Connection():
+    upload: str
+    download: str
     f_pps: int
     def __init__(self, iface: str) -> None:
+        self.upload = ""
+        self.download = ""
         self.interface = iface
         self.f_pps = 0
+
+    def get_sys_ip(self) -> str:
+        return requests.get("https://api.ipify.org").text
+
+    def get_speed(self) -> list:
+        threading.Thread(target=os.system, args=("speedtest > result.txt",)).start()
+        for i in range(0, 30):
+
+            time.sleep(1)
+            results = open("result.txt", "r")
+            speed = results.read()
+
+            if "Upload: " in speed:
+                for line in speed.split("\n"):
+                    if line.startswith("Download:"): self.upload = line.replace("Download:", "").strip()
+                    elif line.startswith("Upload:"): self.download = line.replace("Upload:", "").strip()
+                results.close()
+                return self.upload, self.download
+        
+        results.close()
 
     """
     Run this in a thread then use the 'pps' objects to get the updated PPS
@@ -16,9 +40,8 @@ class Connection():
             time.sleep(1)
             new_rx, new_tx = [int(open(f"/sys/class/net/{self.interface}/statistics/rx_packets", "r").read()), int(open(f"/sys/class/net/{self.interface}/statistics/tx_packets", "r").read())]
             # print(f"New: {new_rx} | {new_tx}")
-            self.f_pps = 0
             self.f_pps = (tx - new_tx) - (rx - new_rx)
-            print(self.f_pps, end="\r")
+            # print(self.f_pps, end="\r")
             
     """
     Run this to get all of the network statistics for all interfaces

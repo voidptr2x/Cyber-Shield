@@ -12,6 +12,8 @@ class Terminal:
 
 class GraphConfig:
     display: bool
+    graph_layout_p: list
+    graph_p: list
     data_c: str
     attacked_data_c: str
     border_c: str

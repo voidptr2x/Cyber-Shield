@@ -1,6 +1,8 @@
 import os, sys, time, threading
 
 from .fx.design import *
+from .fx.graph import *
+
 from .config.config import *
 
 from .tools.os import *
@@ -14,8 +16,9 @@ class CyberShield():
     interfaces: list
     
     def __init__(self, interface) -> None:
-        self.sfx, self.cfg, self.os, self.hdw, self.pps = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface)]
+        self.sfx, self.cfg, self.os, self.hdw, self.pps, self.graph = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface), Graph(23, 65)]
 
+        g = threading.Thread(target=self.pps.get_speed).start()
         """
         Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
         """
@@ -24,6 +27,8 @@ class CyberShield():
         print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end="") # Set Terminal Size
         print("\x1b[0;0f", end="")
         print(self.sfx.render_ui(), end="") # Set UI
+        TerminalControl.move_cursor([11, 37])
+        TerminalControl.listText([11, 37], [255, 255, 255], self.graph.get_graph_layout())
         self.hdw._updateInfo()
 
         self.set_info()
@@ -38,7 +43,7 @@ class CyberShield():
             if self.cfg.os.shell_p != [0, 0]: TerminalControl.placeText(self.cfg.os.shell_p, self.cfg.os.labels_c, "Shell: ", self.cfg.os.value_c, self.os.info._shell)
 
         if self.cfg.hdw.display == True:
-            if self.cfg.hdw.cpu_name_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_name)
+            if self.cfg.hdw.cpu_name_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_name_p, self.cfg.hdw.labels_c, "CPU Name: ", self.cfg.hdw.value_c, self.hdw.info.cpu_name[0:20])
             if self.cfg.hdw.cpu_cores_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.cpu_cores_p, self.cfg.hdw.labels_c, "CPU Cores: ", self.cfg.hdw.value_c, self.hdw.info.cpu_cores)
 
             if self.cfg.hdw.memory_capacity_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.memory_capacity_p, self.cfg.hdw.labels_c, "Memory Capacity: ", self.cfg.hdw.value_c, f"{self.hdw.info.memory_capacity} GB")
@@ -51,11 +56,22 @@ class CyberShield():
             if self.cfg.hdw.hdd_free_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.hdd_free_p, self.cfg.hdw.labels_c, "HDD Free: ", self.cfg.hdw.value_c, f"{self.hdw.info.hdd_free} GB")
             if self.cfg.hdw.hdd_usage_p != [0, 0]: TerminalControl.placeText(self.cfg.hdw.hdd_usage_p, self.cfg.hdw.labels_c, "HDD Usage: ", self.cfg.hdw.value_c, f"{self.hdw.info.hdd_used}/{self.hdw.info.hdd_capacity} GB")
 
-    def start_listener(self) -> None:
-        while True:
-            TerminalControl.placeTextAlt(self.cfg.conn.pps_p, "               ")
-            TerminalControl.placeTextAlt(self.cfg.hdw.cpu_usage_p, "               ")
+        if self.cfg.conn.display:
+            if self.cfg.conn.ip != [0, 0]: TerminalControl.placeText(self.cfg.conn.ip, self.cfg.conn.labels_c, "System IP: ", self.cfg.conn.value_c, self.pps.get_sys_ip())
 
+    def start_listener(self) -> None:
+        self.hdw.parseHardware()
+        while True:
+            if self.pps.upload != "": 
+                if self.cfg.conn.upload_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.upload_speed_p, self.cfg.conn.labels_c, "Upload: ", self.cfg.conn.value_c, self.pps.upload)
+                if self.cfg.conn.download_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.download_speed_p, self.cfg.conn.labels_c, "Download: ", self.cfg.conn.value_c, self.pps.download)
+
+            self.graph.append_to_graph(self.pps.f_pps)
+            TerminalControl.listText(self.cfg.graph.graph_p, [255, 0, 0], self.graph.render_graph())
+
+
+            TerminalControl.place_text(self.cfg.conn.pps_p, "               ")
+            TerminalControl.place_text(self.cfg.hdw.cpu_usage_p, "                      ")
             TerminalControl.placeText(self.cfg.conn.pps_p, self.cfg.conn.labels_c, "PPS: ", self.cfg.conn.value_c, self.pps.f_pps)
             TerminalControl.placeText(self.cfg.hdw.cpu_usage_p, self.cfg.hdw.labels_c, "CPU Usage: ", self.cfg.hdw.value_c, self.hdw.info.cpu_usage)
             time.sleep(1)

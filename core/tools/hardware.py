@@ -59,7 +59,7 @@ class Hardware():
 
         def _updateInfo(self) -> Hardware_Info:
                 self._retrieveInfo()
-                self.parseOS()
+                self.parseHardware()
                 self.parseMEM()
                 self.retrieveHDD()
 
@@ -74,7 +74,7 @@ class Hardware():
 
                 return [cpu, mem, hdd_info]
 
-        def parseOS(self) -> Hardware_Info:
+        def parseHardware(self) -> Hardware_Info:
                 for line in self.cpu_info.split("\n"):
                         if line.startswith("cpu cores"): self.info.cpu_cores = line.replace("cpu cores", "").replace(":", "").strip()
 
