@@ -2,7 +2,7 @@
 Cyber Shield
 <p>The Official Cyber Shield Application Repo.</p>
 <p>Helping the community protect their networks!</p>
-<img src="https://github.com/NefariousTheDev/Cyber-Shield/blob/main/assets/cyber-shield.jpeg">
+<img src="https://github.com/NefariousTheDev/Cyber-Shield/blob/main/assets/85143267-B694-4098-BAC0-6911C80BAF53.png">
 </div>
 
 # Requirements
