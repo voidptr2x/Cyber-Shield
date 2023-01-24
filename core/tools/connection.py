@@ -23,20 +23,25 @@ class Nload():
         while True:
             gg = self.get_nload_stats()
             self.info = self.__parseNload(gg)
-            if self.info.Ttl: ttl = self.info.Ttl 
-            else: ttl = "N/A"
-            if self.info.Curr: curr = self.info.Curr
-            else: curr = "N/A"
-            self.raw_text = f"Curr: {curr}\nAvg: {self.info.Avg}\nMin: {self.info.Min}\nMax: {self.info.Max}\nTtl: {ttl}"
+            self.raw_text = f"Curr: {self.info.Curr}\nAvg: {self.info.Avg}\nMin: {self.info.Min}\nMax: {self.info.Max}\nTtl: {self.info.Ttl}"
 
     def __parseNload(self, data: str) -> nload_info:
         n = nload_info()
         for line in data.split("\n"):
             if line.startswith("Curr:"): n.Curr = line.replace("Curr:", "").strip()
-            elif line.startswith("Avg:"): n.Avg = line.replace("Avg:", "").strip()
-            elif line.startswith("Min:"): n.Min = line.replace("Min:", "").strip()
-            elif line.startswith("Max:"): n.Max = line.replace("Max:", "").strip()
-            elif line.startswith("Ttl"): n.Ttl = line.replace("Ttl", "").strip()
+            else: n.Curr = "N/A"
+            
+            if line.startswith("Avg:"): n.Avg = line.replace("Avg:", "").strip()
+            else: n.Avg = "N/A"
+            
+            if line.startswith("Min:"): n.Min = line.replace("Min:", "").strip()
+            else: n.Min = "N/A"
+            
+            if line.startswith("Max:"): n.Max = line.replace("Max:", "").strip()
+            else: n.Max = "N/A"
+            
+            if line.startswith("Ttl"): n.Ttl = line.replace("Ttl", "").strip()
+            else: n.Ttl = "N/A"
         self.info = n
         return n
                 
