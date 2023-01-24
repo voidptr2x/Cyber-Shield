@@ -28,26 +28,25 @@ class Nload():
     def __parseNload(self, data: str) -> nload_info:
         n = nload_info()
         for line in data.split("\n"):
-            if line.startswith("Curr:"): n.Curr = line.replace("Curr:", "").strip()
+            if "Curr:" in line: n.Curr = line.replace("Curr:", "").strip()
             else: n.Curr = "N/A"
             
-            if line.startswith("Avg:"): n.Avg = line.replace("Avg:", "").strip()
+            if "Avg:" in line: n.Avg = line.replace("Avg:", "").strip()
             else: n.Avg = "N/A"
             
-            if line.startswith("Min:"): n.Min = line.replace("Min:", "").strip()
+            if "Min:" in line: n.Min = line.replace("Min:", "").strip()
             else: n.Min = "N/A"
             
-            if line.startswith("Max:"): n.Max = line.replace("Max:", "").strip()
+            if "Max:" in line: n.Max = line.replace("Max:", "").strip()
             else: n.Max = "N/A"
             
-            if line.startswith("Ttl"): n.Ttl = line.replace("Ttl", "").strip()
+            if "Ttl" in line: n.Ttl = line.replace("Ttl", "").strip()
             else: n.Ttl = "N/A"
         self.info = n
         return n
                 
     def get_nload_stats(self) -> str:
         subprocess.getoutput("touch nload_results.txt; timeout 2 nload > nload_results.txt")
-        time.sleep(1)
         info = ""
         new = open("nload_results.txt", "r").read()
         data = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]').sub('', new)
@@ -59,7 +58,6 @@ class Nload():
         
         os.system("rm -rf nload_results.txt")
         return info
-
 
 class Connection():
     upload: str
