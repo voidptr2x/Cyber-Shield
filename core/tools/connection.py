@@ -25,7 +25,9 @@ class Nload():
             self.info = self.__parseNload(gg)
             if self.info.Ttl: ttl = self.info.Ttl 
             else: ttl = "N/A"
-            self.raw_text = f"Curr: {self.info.Curr}\nAvg: {self.info.Avg}\nMin: {self.info.Min}\nMax: {self.info.Max}\nTtl: {ttl}"
+            if self.info.Curr: curr = self.info.Curr
+            else: curr = "N/A"
+            self.raw_text = f"Curr: {curr}\nAvg: {self.info.Avg}\nMin: {self.info.Min}\nMax: {self.info.Max}\nTtl: {ttl}"
 
     def __parseNload(self, data: str) -> nload_info:
         n = nload_info()
