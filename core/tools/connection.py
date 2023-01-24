@@ -74,7 +74,7 @@ class Connection():
         ip_a = subprocess.getoutput("ip a")
         sys_ip = ""
         iface_found = False
-        c = 0
+        
         for line in ip_a.split("\n"):
                 if self.interface in line: iface_found = True
                 if iface_found:
