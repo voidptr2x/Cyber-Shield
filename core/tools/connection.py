@@ -46,7 +46,7 @@ class Nload():
         return n
                 
     def get_nload_stats(self) -> str:
-        subprocess.getoutput("touch nload_results.txt; timeout 1 nload > nload_results.txt")
+        subprocess.getoutput("touch nload_results.txt; timeout 2 nload > nload_results.txt")
         time.sleep(1)
         info = ""
         new = open("nload_results.txt", "r").read()
