@@ -28,6 +28,7 @@ class Nload():
     def __parseNload(self, data: str) -> nload_info:
         n = nload_info()
         for line in data.split("\n"):
+            print(line)
             if "Curr:" in line: n.Curr = line.replace("Curr:", "").strip()
             else: n.Curr = "N/A"
             
@@ -70,6 +71,17 @@ class Connection():
         self.f_pps = 0
 
     def get_sys_ip(self) -> str:
+        ip_a = subprocess.getoutput("ip a")
+        sys_ip = ""
+        iface_found = False
+        c = 0
+        for line in ip_a.split("\n"):
+                if self.interface in line: iface_found = True
+                if iface_found:
+                        if line.strip().startswith('inet '):
+                                sys_ip = line.strip().split(" ")[1].split("/")[0]
+                                break
+        if sys_ip: return sys_ip
         return requests.get("https://api.ipify.org").text
 
     def get_speed(self) -> list:
