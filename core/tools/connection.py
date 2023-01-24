@@ -39,6 +39,7 @@ class Nload():
     def get_nload_stats(self) -> str:
         subprocess.getoutput("touch nload_results.txt; timeout 1 nload > nload_results.txt")
         time.sleep(1)
+        info = ""
         new = open("nload_results.txt", "r").read()
         data = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]').sub('', new)
 
