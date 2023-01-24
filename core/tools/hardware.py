@@ -57,13 +57,11 @@ class Hardware():
                 self.info = Hardware_Info()
                 self.cpu_info, self.mem_info, self.hdd_info = self._retrieveInfo()
 
-        def _updateInfo(self) -> Hardware_Info:
+        def updateInfo(self) -> None:
                 self._retrieveInfo()
                 self.parseHardware()
                 self.parseMEM()
                 self.retrieveHDD()
-
-                return self.info
 
         def _retrieveInfo(self) -> None:
                 cpu_info, mem_info, hdd_info = [open("/proc/cpuinfo", "r"), open("/proc/meminfo", "r"), psutil.disk_usage("/")]
@@ -74,7 +72,7 @@ class Hardware():
 
                 return [cpu, mem, hdd_info]
 
-        def parseHardware(self) -> Hardware_Info:
+        def parseHardware(self):
                 for line in self.cpu_info.split("\n"):
                         if line.startswith("cpu cores"): self.info.cpu_cores = line.replace("cpu cores", "").replace(":", "").strip()
 
@@ -82,9 +80,7 @@ class Hardware():
 
                 self.info.cpu_usage = subprocess.getoutput("top -bn1 | sed -n '/Cpu/p' | awk '{print $2}' | sed 's/..,//'")
 
-                return self.info
-
-        def parseMEM(self) -> Hardware_Info:
+        def parseMEM(self):
                 for line in self.mem_info.split("\n"):
                         if line.startswith("MemTotal:"): self.info.memory_capacity = round(int(line.replace("MemTotal:", "").replace("kB", "").strip()) / 1000000)
 
@@ -92,9 +88,7 @@ class Hardware():
 
                 self.info.memory_used = self.info.memory_capacity - self.info.memory_free
 
-                return self.info
-
-        def retrieveHDD(self) -> Hardware_Info:
+        def retrieveHDD(self):
                 self.info.hdd_capacity = round(self.hdd_info.total / (2**30))
                 self.info.hdd_used = round(self.hdd_info.used / (2**30))
                 self.info.hdd_free = round(self.hdd_info.free / (2**30))

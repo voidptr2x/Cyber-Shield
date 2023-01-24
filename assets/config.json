@@ -10,9 +10,9 @@
         "display": true,
         "graph_layout_p": [10, 36],
         "graph_p": [11, 44],
-        "data_c": [0, 0, 0],
+        "data_c": [65,105,225],
         "attacked_data_c": [0, 0, 0],
-        "border_c": "{RED}"
+        "border_c": [0, 255, 0]
     },
     "Conn_Table": {
         "display": false,
@@ -71,6 +71,7 @@
         "ms_p": [0, 0],
         "download_speed_p": [6, 76],
         "upload_speed_p": [5, 76],
+        "nload_stats_p": [26, 3],
         
         "pps_p": [7, 76]
     }

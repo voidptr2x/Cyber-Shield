@@ -14,10 +14,12 @@ from .utilities.term_control import *
 class CyberShield():
     current_interface: str
     interfaces: list
+    max_pps: int
     
-    def __init__(self, interface) -> None:
-        self.sfx, self.cfg, self.os, self.hdw, self.pps, self.graph = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface), Graph(23, 65)]
+    def __init__(self, interface, mp: int) -> None:
+        self.sfx, self.cfg, self.os, self.hdw, self.pps, self.graph, self.nload, self.max_pps = [ShieldFX(), Config(), OS(), Hardware(), Connection(interface), Graph(23, 65), Nload(), mp]
 
+        threading.Thread(target=self.nload.runNload).start()
         g = threading.Thread(target=self.pps.get_speed).start()
         """
         Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
@@ -28,8 +30,8 @@ class CyberShield():
         print("\x1b[0;0f", end="")
         print(self.sfx.render_ui(), end="") # Set UI
         TerminalControl.move_cursor([11, 37])
-        TerminalControl.listText([11, 37], [255, 255, 255], self.graph.get_graph_layout())
-        self.hdw._updateInfo()
+        TerminalControl.listText_c([11, 37], [255, 255, 255], self.graph.get_graph_layout())
+        self.hdw.updateInfo()
 
         self.set_info()
         threading.Thread(target=self.pps.runPPS).start()
@@ -60,14 +62,18 @@ class CyberShield():
             if self.cfg.conn.ip != [0, 0]: TerminalControl.placeText(self.cfg.conn.ip, self.cfg.conn.labels_c, "System IP: ", self.cfg.conn.value_c, self.pps.get_sys_ip())
 
     def start_listener(self) -> None:
-        self.hdw.parseHardware()
+        self.hdw.updateInfo()
         while True:
+            if self.cfg.conn.nload_stats_p != [0, 0]: TerminalControl.listText_c(self.cfg.conn.nload_stats_p, self.cfg.conn.value_c, self.nload.get_raw_text())
             if self.pps.upload != "": 
                 if self.cfg.conn.upload_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.upload_speed_p, self.cfg.conn.labels_c, "Upload: ", self.cfg.conn.value_c, self.pps.upload)
                 if self.cfg.conn.download_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.download_speed_p, self.cfg.conn.labels_c, "Download: ", self.cfg.conn.value_c, self.pps.download)
+            else:
+                if self.cfg.conn.upload_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.upload_speed_p, self.cfg.conn.labels_c, "Upload: ", self.cfg.conn.value_c, "N/A")
+                if self.cfg.conn.download_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.download_speed_p, self.cfg.conn.labels_c, "Download: ", self.cfg.conn.value_c, "N/A")
 
             self.graph.append_to_graph(self.pps.f_pps)
-            TerminalControl.listText(self.cfg.graph.graph_p, [255, 0, 0], self.graph.render_graph())
+            TerminalControl.listText(self.cfg.graph.graph_p, self.graph.render_graph().replace("#", TerminalControl.ansiColor(self.cfg.graph.data_c) + "#\x1b[0m",).replace(".", "\x1b[37m.\x1b[0m"))
 
 
             TerminalControl.place_text(self.cfg.conn.pps_p, "               ")

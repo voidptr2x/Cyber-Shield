@@ -97,4 +97,5 @@ class Config():
                 self.conn.pps_p = self.config['Connection']['pps_p']
                 self.conn.upload_speed_p = self.config['Connection']['upload_speed_p']
                 self.conn.download_speed_p = self.config['Connection']['download_speed_p']
+                self.conn.nload_stats_p = self.config['Connection']['nload_stats_p']
                 return self.conn

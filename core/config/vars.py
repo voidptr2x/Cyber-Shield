@@ -72,3 +72,4 @@ class ConnectionConfig:
     ms_p: str
     download_speed_p: str
     upload_speed_p: str
+    nload_stats_p: str
