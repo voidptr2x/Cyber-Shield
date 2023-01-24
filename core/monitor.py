@@ -64,7 +64,7 @@ class CyberShield():
     def start_listener(self) -> None:
         self.hdw.updateInfo()
         while True:
-            if self.max_pps > self.pps.f_pps:
+            if self.max_pps > self.pps.f_pps and self.max_pps != 0:
                 print("\033]0;Cyber Shield v3.00 | Status: Offline....\007", end="")
             else: print("\033]0;Cyber Shield v3.00 | Status: Online....\007", end="")
             if self.cfg.conn.nload_stats_p != [0, 0]: TerminalControl.listText_c(self.cfg.conn.nload_stats_p, self.cfg.conn.value_c, self.nload.get_raw_text())
