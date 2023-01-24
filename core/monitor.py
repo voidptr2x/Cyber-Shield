@@ -64,6 +64,9 @@ class CyberShield():
     def start_listener(self) -> None:
         self.hdw.updateInfo()
         while True:
+            if self.max_pps > self.pps.f_pps:
+                print("\033]0;Cyber Shield v3.00 | Status: Offline....\007", end="")
+            else: print("\033]0;Cyber Shield v3.00 | Status: Online....\007", end="")
             if self.cfg.conn.nload_stats_p != [0, 0]: TerminalControl.listText_c(self.cfg.conn.nload_stats_p, self.cfg.conn.value_c, self.nload.get_raw_text())
             if self.pps.upload != "": 
                 if self.cfg.conn.upload_speed_p != [0, 0]: TerminalControl.placeText(self.cfg.conn.upload_speed_p, self.cfg.conn.labels_c, "Upload: ", self.cfg.conn.value_c, self.pps.upload)
@@ -74,7 +77,6 @@ class CyberShield():
 
             self.graph.append_to_graph(self.pps.f_pps)
             TerminalControl.listText(self.cfg.graph.graph_p, self.graph.render_graph().replace("#", TerminalControl.ansiColor(self.cfg.graph.data_c) + "#\x1b[0m",).replace(".", "\x1b[37m.\x1b[0m"))
-
 
             TerminalControl.place_text(self.cfg.conn.pps_p, "               ")
             TerminalControl.place_text(self.cfg.hdw.cpu_usage_p, "                      ")
