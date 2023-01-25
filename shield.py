@@ -17,11 +17,10 @@ for arg in sys.argv:
     if arg == "-mp": max_pps = sys.argv[c+1]
     c += 1
 
-commit = get_current_commit("shield optimization")
+commit = get_current_commit("shield optimization_fix")
 commits = getAllCommits()
 
 try:
-    gang
     if not commit: 
         print(f"[ + ] New update detected, Please update your app to verison {next(iter(commits))}")
         exit(0)
