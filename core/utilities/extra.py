@@ -6,10 +6,14 @@ def getAllCommits() -> dict[str]:
 
     commits = {}
     last_commit = ""
+    last_commit_comment = ""
     c = 0
     for line in resp_lines:
-        if "View commit details" in line: last_commit = line.split(" ")[len(line.split(" "))-1]
-        if "Link--primary text-bold js-navigation-open markdown-title" in line: commits[last_commit] = line.split(">")[len(line.split(">"))-2].replace("</a", "")
+    
+        if "Link--primary text-bold js-navigation-open markdown-title" in line: 
+            last_commit_comment = line.split(">")[len(line.split(">"))-2].replace("</a", "")
+
+        if "View commit details" in line: commits[line.split(" ")[len(line.split(" "))-1]] = last_commit_comment
 
     return commits
 

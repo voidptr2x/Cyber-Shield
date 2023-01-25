@@ -18,11 +18,13 @@ for arg in sys.argv:
     c += 1
 
 try:
-    commit = get_current_commit("optional error report added")
+    commit = get_current_commit("update checker")
+    commits = getAllCommits()
+
     if not commit: 
-        print("[ + ] New update detected, Please update your app!")
+        print(f"[ + ] New update detected, Please update your app to verison {next(iter(commits))}")
         exit(0)
-        
+
     print(f"Welcome To Cyber Shield v3.0 | {commit['version']}")
     for i in range(0, 5):
         print("Loading.....")
@@ -37,7 +39,7 @@ except Exception as err:
     print("\x1b[2J")
     print(f"[ X ] Something went wrong.\r\n==================================================\r\n\x1b[31mPython Error\x1b[0m\r\nFilepath: {__file__}\nLine #: {sys.exc_info()[-1].tb_lineno}\nError: {err}\r\n==================================================\r\n")
     report_check = input("This problem can be solved and fix within a few minutes or hours if reported!\r\nDo you want to report this problem.? (Y/N):")
-    update_info = get_current_commit("optional error report added")
+    update_info = get_current_commit("update checker")
     if report_check == "y" or report_check == "yes":
         discord_acc = input("What is your discord tag.? (Optional): ")
         if not discord_acc: discord_acc = "N/A"
