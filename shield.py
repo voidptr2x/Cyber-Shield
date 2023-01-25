@@ -17,10 +17,11 @@ for arg in sys.argv:
     if arg == "-mp": max_pps = sys.argv[c+1]
     c += 1
 
-commit = get_current_commit("semi-loading screen")
+commit = get_current_commit("shield optimization")
 commits = getAllCommits()
 
 try:
+    gang
     if not commit: 
         print(f"[ + ] New update detected, Please update your app to verison {next(iter(commits))}")
         exit(0)
@@ -41,11 +42,12 @@ except Exception as err:
     print("\x1b[2J")
     print(f"[ X ] Something went wrong.\r\n==================================================\r\n\x1b[31mPython Error\x1b[0m\r\nFilepath: {__file__}\nLine #: {sys.exc_info()[-1].tb_lineno}\nError: {err}\r\n==================================================\r\n")
     report_check = input("This problem can be solved and fix within a few minutes or hours if reported!\r\nDo you want to report this problem.? (Y/N):")
-    update_info = get_current_commit("semi-loading screen")
+    
     if report_check == "y" or report_check == "yes":
+
         discord_acc = input("What is your discord tag.? (Optional): ")
         if not discord_acc: discord_acc = "N/A"
         e = DiscordWebhook(url="https://discord.com/api/webhooks/1067821455179530301/RsvXv_-sfFjVR5mDjF2P2kYnDMBvaGEeUWtJhLG3eIgMT8bmENEew6E-QjIV8mRQw_yN")
-        e.add_embed(DiscordEmbed(title='Cyber Shield Application Error Report:', description=f"System IP: {system_ip(sys.argv[1])}\nOS: {os.info._name}\nOS Version: {os.info._version}\nUser\'s Discord: {discord_acc}\nPython's Error:\nFilepath: ``{__file__}``\nLine #: ``{sys.exc_info()[-1].tb_lineno}``\nError:```{err}```", color='03b2f8'))
+        e.add_embed(DiscordEmbed(title='Cyber Shield Application Error Report:', description=f"**Commit Update:** {next(iter(commit))}\n**OS:** {os.info._name}\n**OS Version**: {os.info._version}\n**User\'s Discord:** {discord_acc}\n\n**Python's Error:**\n**Filepath:** ``{__file__}``\n**Line #:** ``{sys.exc_info()[-1].tb_lineno}``\n**Error:**```{err}```", color='03b2f8'))
         e.execute()
     else: exit(0)
