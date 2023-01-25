@@ -17,7 +17,7 @@ for arg in sys.argv:
     if arg == "-mp": max_pps = sys.argv[c+1]
     c += 1
 
-commit = get_current_commit("main file tiny optimization")
+commit = get_current_commit("semi-loading screen")
 commits = getAllCommits()
 
 try:
@@ -26,8 +26,10 @@ try:
         exit(0)
 
     print(f"Welcome To Cyber Shield v3.0 | Commit Version: {next(iter(commit))}")
+    loading = "Loading"
     for i in range(0, 5):
-        print("Loading.....")
+        loading += "."
+        print(loading, end="\r")
         time.sleep(1)
     CyberShield(sys.argv[1], max_pps)
 except KeyboardInterrupt:
@@ -39,7 +41,7 @@ except Exception as err:
     print("\x1b[2J")
     print(f"[ X ] Something went wrong.\r\n==================================================\r\n\x1b[31mPython Error\x1b[0m\r\nFilepath: {__file__}\nLine #: {sys.exc_info()[-1].tb_lineno}\nError: {err}\r\n==================================================\r\n")
     report_check = input("This problem can be solved and fix within a few minutes or hours if reported!\r\nDo you want to report this problem.? (Y/N):")
-    update_info = get_current_commit("main file tiny optimization")
+    update_info = get_current_commit("semi-loading screen")
     if report_check == "y" or report_check == "yes":
         discord_acc = input("What is your discord tag.? (Optional): ")
         if not discord_acc: discord_acc = "N/A"
