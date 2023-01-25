@@ -25,10 +25,4 @@ def getAllCommits() -> dict[str]:
 """
 def get_current_commit(commit_comment: str) -> dict:
     s = getAllCommits()
-    info = {}
-    for key in s:
-        if s[key] == commit_comment:
-            info['update'] = key
-            info['comment'] = s[key]
-            return info
-    return info
+    return {next(iter(s)): s[next(iter(s))]}
