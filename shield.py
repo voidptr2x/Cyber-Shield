@@ -39,14 +39,14 @@ except Exception as err:
     tp, val, tb = sys.exc_info()
     os = OS()
     print("\x1b[2J")
-    print(f"[ X ] Something went wrong.\r\n==================================================\r\n\x1b[31mPython Error\x1b[0m\r\nFilepath: {__file__}\nLine #: {sys.exc_info()[-1].tb_lineno}\nError: {err}\r\n==================================================\r\n")
-    report_check = input("This problem can be solved and fix within a few minutes or hours if reported!\r\nDo you want to report this problem.? (Y/N):")
+    print(f"[ X ] Something went wrong.\r\n==================================================\r\n\x1b[31mPython Error\x1b[0m\r\nFilepath: {__file__}\nLine #: {sys.exc_info()[-1].tb_lineno}\nCommit Update: {next(iter(commit))}\nOS: {os.info._name}\nOS Version: {os.info._version}\nPython's Error:\nFilepath: {__file__}\nLine #: {sys.exc_info()[-1].tb_lineno}\nError: {err}\r\n==================================================\r\n")
+    # report_check = input("This problem can be solved and fix within a few minutes or hours if reported!\r\nDo you want to report this problem.? (Y/N):")
     
-    if report_check == "y" or report_check == "yes":
+    # if report_check == "y" or report_check == "yes":
 
-        discord_acc = input("What is your discord tag.? (Optional): ")
-        if not discord_acc: discord_acc = "N/A"
-        e = DiscordWebhook(url="https://discord.com/api/webhooks/1067821455179530301/RsvXv_-sfFjVR5mDjF2P2kYnDMBvaGEeUWtJhLG3eIgMT8bmENEew6E-QjIV8mRQw_yN")
-        e.add_embed(DiscordEmbed(title='Cyber Shield Application Error Report:', description=f"**Commit Update:** {next(iter(commit))}\n**OS:** {os.info._name}\n**OS Version**: {os.info._version}\n**User\'s Discord:** {discord_acc}\n\n**Python's Error:**\n**Filepath:** ``{__file__}``\n**Line #:** ``{sys.exc_info()[-1].tb_lineno}``\n**Error:**```{err}```", color='03b2f8'))
-        e.execute()
-    else: exit(0)
+    #     discord_acc = input("What is your discord tag.? (Optional): ")
+    #     if not discord_acc: discord_acc = "N/A"
+    #     e = DiscordWebhook(url="https://discord.com/api/webhooks/1067878064912085124/c4SlEpkKrcyyZfYrAkWM2OD2M_zz27Li5Zg6y-v-CpAoXW4uIXdi5_jv4brCTooQX9eR")
+    #     e.add_embed(DiscordEmbed(title='Cyber Shield Application Error Report:', description=f"**Commit Update:** {next(iter(commit))}\n**OS:** {os.info._name}\n**OS Version**: {os.info._version}\n**User\'s Discord:** {discord_acc}\n\n**Python's Error:**\n**Filepath:** ``{__file__}``\n**Line #:** ``{sys.exc_info()[-1].tb_lineno}``\n**Error:**```{err}```", color='03b2f8'))
+    #     e.execute()
+    # else: exit(0)

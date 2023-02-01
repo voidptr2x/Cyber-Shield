@@ -24,7 +24,7 @@ class CyberShield():
         """
         Pull all interfaces to check if there more than one interface. if so, request user for the interface to use
         """
-        print(chr(27) + "[2J") # Clear Screen
+        print(chr(27) + "[2J", end="") # Clear Screen
         print("\033[?25l\x1b[37m", end="") # Hide Cursor
         print(f"\x1b[8;{self.cfg.term.size[0]};{self.cfg.term.size[1]}t", end="") # Set Terminal Size
         print("\x1b[0;0f", end="")
