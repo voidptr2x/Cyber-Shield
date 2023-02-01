@@ -1,6 +1,6 @@
 import requests
 
-def getAllCommits() -> dict[str]:
+def getAllCommits() -> dict:
     github_resp = requests.get("https://github.com/NefariousTheDev/Cyber-Shield/commits/main").text
     resp_lines = github_resp.split("\n")
 
